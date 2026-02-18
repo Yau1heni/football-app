@@ -1,0 +1,35 @@
+@use 'styles/variables.scss' as *;
+
+.loader {
+  border: 4px solid $color-primary;
+  border-radius: $radius-circle;
+  border-right: 4px solid transparent;
+  transform: rotate(35deg);
+  animation: spin 1s linear infinite;
+}
+
+.loader.s {
+  width: $loader-size-s;
+  height: $loader-size-s;
+  border-width: 2px;
+  margin: 4px;
+}
+
+.loader.m {
+  width: $loader-size-m;
+  height: $loader-size-m;
+  margin: $space-xxs;
+}
+
+.loader.l {
+  width: $loader-size-l;
+  height: $loader-size-l;
+  border-width: 5px;
+  margin: $space-xs;
+}
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

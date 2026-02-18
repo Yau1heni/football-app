@@ -1,0 +1,36 @@
+@use 'styles/variables.scss' as *;
+
+.button {
+  padding: 15px 19px;
+  background: $color-primary;
+  font-weight: 400;
+  font-size: $font-size-m;
+  line-height: 120%;
+  color: $color-light;
+  border-radius: $border-radius;
+  cursor: pointer;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-xs;
+}
+
+.button:not(.buttonLoading):hover {
+  background: $color-primary-hover;
+}
+
+.button:not(.buttonLoading):active {
+  background: $color-primary-active;
+}
+
+.button:disabled {
+  background: $color-grey;
+  cursor: auto;
+  pointer-events: none;
+}
+
+.button .loader {
+  border-color: $color-light;
+  border-top-color: transparent;
+}

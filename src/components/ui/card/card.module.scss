@@ -1,0 +1,103 @@
+@use 'styles/variables.scss' as *;
+@use 'styles/mixins.scss' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 100%;
+  cursor: pointer;
+  background: $color-light;
+  border-radius: $border-radius;
+
+  @include tablet {
+    flex-direction: row;
+    width: 100%;
+  }
+
+  @include mobile {
+    flex-direction: column;
+  }
+
+  &:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  .image {
+    position: relative;
+    width: 350px;
+    height: 350px;
+    overflow: hidden;
+    background: $color-grey;
+    border-radius: $border-radius $border-radius 0 0;
+
+    @include mobile {
+      width: 100%;
+    }
+
+    .statusSlot {
+      position: absolute;
+      top: $space-xs;
+      right: $space-xs;
+      z-index: 1;
+      padding: 4px 8px;
+      font-size: $font-size-xs;
+      font-weight: 500;
+      color: $color-light;
+      background: $color-primary;
+      border-radius: 4px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      background-repeat: no-repeat;
+    }
+  }
+
+  .cardBody {
+    padding: $space-xl $space-xs;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    @include tablet {
+      width: 50%;
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: $space-xxs;
+      margin-bottom: $space-l;
+    }
+
+    .subTitle {
+      color: $color-secondary;
+    }
+
+    .captionSlot {
+      font-weight: 500;
+      font-size: $font-size-xs;
+      color: $color-secondary;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+
+      .contentSlot {
+        font-weight: 700;
+        font-size: $font-size-m;
+        line-height: 122%;
+      }
+    }
+  }
+}
