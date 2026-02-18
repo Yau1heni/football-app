@@ -27,7 +27,8 @@ pre {
   margin: 0;
 }
 
-input, input:focus {
+input,
+input:focus {
   outline: none;
   appearance: none;
 }
@@ -37,9 +38,9 @@ a {
   color: inherit;
 }
 
-ul, ul li {
+ul,
+ul li {
   padding: 0;
   margin: 0;
   list-style: none;
 }
-

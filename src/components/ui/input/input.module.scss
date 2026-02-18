@@ -25,7 +25,8 @@
   border-color: $color-error;
 }
 
-.input::placeholder, input:disabled {
+.input::placeholder,
+input:disabled {
   color: $color-secondary;
 }
 
@@ -42,4 +43,3 @@
   border: none;
   cursor: pointer;
 }
-
