@@ -1,4 +1,4 @@
-import Icon from 'components/icons/Icon';
+import { Icon } from '../../icon';
 
 export const SocialDefaultIcon = () => {
   return (

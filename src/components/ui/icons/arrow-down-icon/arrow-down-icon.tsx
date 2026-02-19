@@ -1,8 +1,8 @@
-import * as React from 'react';
+import type { FC } from 'react';
 
 import { Icon, type IconProps } from '../icon';
 
-export const ArrowDownIcon: React.FC<IconProps> = (props) => (
+export const ArrowDownIcon: FC<IconProps> = (props) => (
   <Icon {...props}>
     <path
       fillRule="evenodd"

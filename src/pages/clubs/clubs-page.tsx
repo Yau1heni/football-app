@@ -1,3 +1,5 @@
+import { Layout } from 'components/layout';
+
 export const ClubsPage = () => {
-  return <div>ClubsPage</div>;
+  return <Layout>ClubsPage</Layout>;
 };

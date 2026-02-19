@@ -1,4 +1,5 @@
 import { routes } from 'configs/routes.ts';
+import { ArticlesPage } from 'pages/articles';
 import { ClubPage } from 'pages/club';
 import { ClubsPage } from 'pages/clubs';
 import { NotFound } from 'pages/not-found';
@@ -18,6 +19,10 @@ export const routesConfig: RouteObject[] = [
       {
         path: routes.club.mask,
         element: <ClubPage />,
+      },
+      {
+        path: routes.articles.mask,
+        element: <ArticlesPage />,
       },
     ],
   },
