@@ -1,3 +1,4 @@
+import { Button } from 'components/ui/button';
 import { CloseIcon } from 'components/ui/icons';
 import type { FC, ReactNode, MouseEvent } from 'react';
 import { createPortal } from 'react-dom';
@@ -33,14 +34,15 @@ export const BurgerMenu: FC<BurgerMenuProps> = ({ children }) => {
         aria-label="Меню навигации"
       >
         <div className={styles.panelHeader}>
-          <button
+          <Button
             type="button"
+            variant="ghost"
             className={styles.closeButton}
             onClick={close}
             aria-label="Закрыть меню"
           >
             <CloseIcon />
-          </button>
+          </Button>
         </div>
         <div className={styles.panelBody}>{children}</div>
       </div>

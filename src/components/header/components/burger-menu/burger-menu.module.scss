@@ -97,19 +97,6 @@
 .closeButton {
   width: 40px;
   height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: none;
-  background: transparent;
-  border-radius: $border-radius;
-  cursor: pointer;
-  color: $color-dark;
-  transition: background-color 0.2s ease;
-
-  &:hover {
-    background-color: $color-primary-overlay;
-  }
 }
 
 .panelBody {

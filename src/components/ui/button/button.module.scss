@@ -1,27 +1,44 @@
 @use 'styles/variables.scss' as *;
 
 .button {
-  padding: 15px 19px;
-  background: $color-primary;
-  font-weight: 400;
-  font-size: $font-size-m;
-  line-height: 120%;
-  color: $color-light;
+  border: none;
   border-radius: $border-radius;
   cursor: pointer;
-  border: none;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: $space-xs;
 }
 
-.button:not(.buttonLoading):hover {
+.button_primary {
+  padding: 15px 19px;
+  background: $color-primary;
+  font-weight: 400;
+  font-size: $font-size-m;
+  line-height: 120%;
+  color: $color-light;
+}
+
+.button_primary:not(.buttonLoading):hover {
   background: $color-primary-hover;
 }
 
-.button:not(.buttonLoading):active {
+.button_primary:not(.buttonLoading):active {
   background: $color-primary-active;
+}
+
+.button_ghost {
+  padding: 0;
+  min-width: 40px;
+  min-height: 40px;
+  background: transparent;
+  color: $color-dark;
+  transition: background-color 0.2s ease;
+}
+
+.button_ghost:not(.buttonLoading):hover,
+.button_ghost:not(.buttonLoading):active {
+  background-color: $color-primary-overlay;
 }
 
 .button:disabled {
@@ -30,7 +47,17 @@
   pointer-events: none;
 }
 
+.button_ghost:disabled {
+  background: transparent;
+  color: $color-grey;
+}
+
 .button .loader {
   border-color: $color-light;
+  border-top-color: transparent;
+}
+
+.button_ghost .loader {
+  border-color: $color-dark;
   border-top-color: transparent;
 }
