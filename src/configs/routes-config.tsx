@@ -1,9 +1,10 @@
-import App from 'app.tsx';
 import { routes } from 'configs/routes.ts';
 import { ClubPage } from 'pages/club';
 import { ClubsPage } from 'pages/clubs';
 import { NotFound } from 'pages/not-found';
 import { Navigate, type RouteObject } from 'react-router';
+
+import App from '../app.tsx';
 
 export const routesConfig: RouteObject[] = [
   {
