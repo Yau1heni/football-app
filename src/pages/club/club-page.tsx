@@ -1,11 +1,11 @@
 import { Layout } from 'components/layout';
-import { PageTitle } from 'components/page-title';
+
+import { ClubContent } from './components/club-content/club-content.tsx';
 
 export const ClubPage = () => {
   return (
     <Layout>
-      <PageTitle title={'Клуб'} />
-      ClubPage
+      <ClubContent />
     </Layout>
   );
 };

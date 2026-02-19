@@ -1,0 +1,60 @@
+@use 'styles/variables.scss' as *;
+@use 'styles/mixins.scss' as *;
+
+.clubDescription {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-xl;
+  align-items: flex-start;
+}
+
+.infoBlock {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xs;
+  flex: 1;
+  min-width: 200px;
+}
+
+.infoRow {
+  display: flex;
+  align-items: baseline;
+  gap: $space-xs;
+  flex-wrap: wrap;
+}
+
+.label {
+  color: $color-secondary;
+  min-width: 140px;
+  font-size: $font-size-s;
+}
+
+.value {
+  font-size: $font-size-s;
+}
+
+.websiteLink {
+  display: inline-flex;
+  align-items: center;
+  margin-top: $space-s;
+  color: $color-primary;
+  text-decoration: none;
+  font-size: $font-size-s;
+  transition: color 0.2s ease;
+
+  &:hover {
+    color: $color-primary-hover;
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.socialTitle {
+  font-size: $font-size-s;
+  color: $color-secondary;
+  margin-bottom: $space-xxs;
+}

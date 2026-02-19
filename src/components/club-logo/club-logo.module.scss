@@ -1,0 +1,38 @@
+@use 'styles/variables.scss' as *;
+
+.clubLogo {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.clubLogoSizeS {
+  width: 120px;
+  height: 120px;
+}
+
+.clubLogoSizeM {
+  width: 280px;
+  height: 280px;
+}
+
+.favoriteBadge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: $color-light;
+  background: $color-primary;
+  border-radius: 4px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  border-radius: $radius-circle;
+  background: $color-background;
+  padding: $space-xs;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}

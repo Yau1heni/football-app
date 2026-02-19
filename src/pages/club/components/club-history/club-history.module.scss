@@ -1,0 +1,16 @@
+@use 'styles/variables.scss' as *;
+
+.clubHistory {
+  display: flex;
+  flex-direction: column;
+
+  .historyText {
+    margin: 0;
+    font-size: $font-size-s;
+    line-height: 1.6;
+    color: $color-dark;
+    white-space: pre-line;
+  }
+}
+
+
