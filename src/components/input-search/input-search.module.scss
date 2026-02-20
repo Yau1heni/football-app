@@ -1,0 +1,6 @@
+@use 'styles/variables' as *;
+
+.inputSearch {
+  display: flex;
+  gap: $space-m;
+}

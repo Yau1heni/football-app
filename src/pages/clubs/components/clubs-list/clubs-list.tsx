@@ -1,6 +1,4 @@
-import { clubsApi } from 'api/clubs-api.ts';
 import { StateMessage } from 'components/state-message';
-import { useAsync } from 'hooks/use-async';
 import { type FC } from 'react';
 import type { Club } from 'types/clubs.types.ts';
 
@@ -8,11 +6,13 @@ import { ClubCard } from './club-card/club-card.tsx';
 import { ClubsListSkeleton } from './clubs-list-skeleton.tsx';
 import styles from './clubs-list.module.scss';
 
-export const ClubsList: FC = () => {
-  const { data, isLoading, isError } = useAsync<Club[]>(() => clubsApi.getClubs(), []);
+type ClubsList = {
+  clubs: Club[];
+  isLoading: boolean;
+  isError: boolean;
+};
 
-  const clubs = data ?? [];
-
+export const ClubsList: FC<ClubsList> = ({ clubs, isError, isLoading }) => {
   if (isError) {
     return <StateMessage variant="error" title="Ошибка загрузки клубов" />;
   }
