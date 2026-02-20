@@ -6,3 +6,4 @@ export { EmptyIcon } from './empty-icon';
 export { ErrorIcon } from './error-icon';
 export { ArrowRightIcon } from './arrow-right-icon';
 export { CupIcon } from './cup-icon';
+export { ArrowLeftIcon } from './arrow-left-icon';

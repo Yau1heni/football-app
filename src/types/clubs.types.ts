@@ -24,6 +24,11 @@ export type Club = {
   social: { name: SocialIconsNames; link: string }[];
 };
 
+export type GetClubsResponse = {
+  clubsData: Club[];
+  found: number;
+};
+
 export type SocialIconType = { name: string; link: string };
 export type SocialIconsNames = keyof typeof SOCIAL_ICONS;
 

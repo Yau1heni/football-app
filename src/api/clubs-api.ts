@@ -13,7 +13,7 @@ import {
   orderBy,
   getCountFromServer,
 } from 'firebase/firestore';
-import type { Club } from 'types/clubs.types.ts';
+import type { Club, GetClubsResponse } from 'types/clubs.types.ts';
 import { clubsFirestoreConverter } from 'utils/firebase-converter.ts';
 
 type GetClubsTypesenseOptions = {
@@ -24,7 +24,7 @@ type GetClubsTypesenseOptions = {
 };
 
 export const clubsApi = {
-  async getClubsFromTypesense(options: GetClubsTypesenseOptions): Promise<Club[]> {
+  async getClubsFromTypesense(options: GetClubsTypesenseOptions): Promise<GetClubsResponse> {
     const {
       searchTerm = '',
       page = START_PAGE,
@@ -45,7 +45,9 @@ export const clubsApi = {
         num_typos: 1,
       });
 
-    return (response.hits ?? []).map((hit) => hit.document as Club);
+    const data = (response.hits ?? []).map((hit) => hit.document as Club);
+
+    return { clubsData: data, found: response.found };
   },
 
   async getClubs(): Promise<Club[]> {
