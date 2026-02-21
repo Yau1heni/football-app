@@ -3,6 +3,7 @@ import { ClubLogo } from 'components/club-logo';
 import { PageTitle } from 'components/page-title';
 import { StateMessage } from 'components/state-message';
 import { useAsync } from 'hooks/use-async.ts';
+import { usePageMeta } from 'hooks/use-page-meta.ts';
 import type { FC } from 'react';
 import { useParams } from 'react-router';
 import type { Club } from 'types/clubs.types.ts';
@@ -16,11 +17,21 @@ import styles from './club-content.module.scss';
 
 export const ClubContent: FC = () => {
   const { id } = useParams();
+
   const {
     data: club,
     isLoading,
     isError,
-  } = useAsync<Club | null>(() => clubsApi.getClub(id || ''), [id]);
+  } = useAsync<Club | null>(() => (id ? clubsApi.getClub(id) : Promise.resolve(null)), [id]);
+
+  usePageMeta({
+    title: club ? `${club.name} | #iLoveThisGame` : undefined,
+    description: club ? `${club.name} — клуб из ${club.country}` : undefined,
+  });
+
+  if (!id) {
+    return <StateMessage variant="empty" title="Клуб не найден" />;
+  }
 
   if (isError) {
     return <StateMessage variant="error" title="Ошибка загрузки клуба" />;
