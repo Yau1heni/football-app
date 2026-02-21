@@ -1,3 +1,4 @@
+import { ErrorBoundary } from 'components/error-boundary';
 import { routesConfig } from 'configs/routes-config.tsx';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -11,6 +12,8 @@ const root = createRoot(document.getElementById('root') as HTMLDivElement);
 
 root.render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <ErrorBoundary>
+      <RouterProvider router={router} />
+    </ErrorBoundary>
   </StrictMode>
 );
