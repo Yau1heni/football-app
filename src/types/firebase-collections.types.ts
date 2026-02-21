@@ -1,4 +1,4 @@
-import type { COLLECTIONS } from 'constants/collections.ts';
+import type { CLUBS_COLLECTIONS } from 'constants/firebase-collections.ts';
 
 export type ClubFields =
-  (typeof COLLECTIONS.CLUBS.FIELD_PATH)[keyof typeof COLLECTIONS.CLUBS.FIELD_PATH];
+  (typeof CLUBS_COLLECTIONS.FIELD_PATH)[keyof typeof CLUBS_COLLECTIONS.FIELD_PATH];
