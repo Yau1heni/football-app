@@ -9,7 +9,7 @@
   flex-direction: column;
   gap: $space-xl;
 
-   @include laptop {
+  @include laptop {
     padding: 14px 16px;
   }
 }

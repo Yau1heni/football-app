@@ -4,15 +4,7 @@ import { SORT_DIRECTIONS } from 'constants/sort-direction.ts';
 
 import { db } from 'configs/firebase-config.ts';
 import { clientTypesense } from 'configs/typesense-config.ts';
-import {
-  collection,
-  doc,
-  getDoc,
-  getDocs,
-  query,
-  orderBy,
-  getCountFromServer,
-} from 'firebase/firestore';
+import { doc, getDoc } from 'firebase/firestore';
 import type { Club, GetClubsResponse } from 'types/clubs.types.ts';
 import { clubsFirestoreConverter } from 'utils/firebase-converter.ts';
 
@@ -50,15 +42,6 @@ export const clubsApi = {
     return { clubsData: data, found: response.found };
   },
 
-  async getClubs(): Promise<Club[]> {
-    const clubsCollection = collection(db, CLUBS_COLLECTIONS.PATH);
-    const clubsQuery = query(clubsCollection, orderBy(CLUBS_COLLECTIONS.FIELD_PATH.NAME));
-    const convertedData = clubsQuery.withConverter(clubsFirestoreConverter);
-    const clubsSnapshot = await getDocs(convertedData);
-
-    return clubsSnapshot.docs.map((doc) => doc.data());
-  },
-
   async getClub(id: string): Promise<Club | null> {
     const clubCollection = doc(db, CLUBS_COLLECTIONS.PATH, id);
     const convertedData = clubCollection.withConverter(clubsFirestoreConverter);
@@ -69,12 +52,5 @@ export const clubsApi = {
     }
 
     return null;
-  },
-
-  async getTotalClubsCount() {
-    const clubsCollection = collection(db, CLUBS_COLLECTIONS.PATH);
-    const clubsSnapshot = await getCountFromServer(clubsCollection);
-
-    return clubsSnapshot.data().count;
   },
 };

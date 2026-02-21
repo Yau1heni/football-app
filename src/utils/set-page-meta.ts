@@ -42,7 +42,7 @@ export const setPageMeta = (options: PageMetaOptions): void => {
     const ogTitle = getOrCreateMeta(META_NAMES.OG_TITLE, true);
     ogTitle.setAttribute('content', title);
   }
-}
+};
 
 export const resetPageMeta = (): void => {
   document.title = DEFAULT_TITLE;
@@ -52,6 +52,6 @@ export const resetPageMeta = (): void => {
   ogTitle.setAttribute('content', DEFAULT_TITLE);
   const ogDesc = getOrCreateMeta(META_NAMES.OG_DESCRIPTION, true);
   ogDesc.setAttribute('content', DEFAULT_DESCRIPTION);
-}
+};
 
 export { DEFAULT_TITLE, DEFAULT_DESCRIPTION };

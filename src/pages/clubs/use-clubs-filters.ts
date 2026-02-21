@@ -6,7 +6,9 @@ import { useSearchParams } from 'react-router';
 export const useClubsFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const searchTerm = searchParams.get(QUERY_PARAMS.SEARCH) ?? '';
-  const page = +(searchParams.get(QUERY_PARAMS.PAGE) ?? START_PAGE);
+
+  const rawPage = searchParams.get(QUERY_PARAMS.PAGE);
+  const page = rawPage ? Math.max(START_PAGE, parseInt(rawPage, 10)) : START_PAGE;
 
   const applySearch = (value: string) => {
     setSearchParams(

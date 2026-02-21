@@ -27,7 +27,7 @@ export const ClubsPage = () => {
       <PageTitle title={'Клубы'} />
       <Filters initialSearch={searchTerm} onApplySearch={applySearch} />
       <ClubsList clubs={data?.clubsData || []} isLoading={isLoading} isError={isError} />
-      {!!data?.found && data.found > PAGINATION_LIMIT && (
+      {data != null && data.found > PAGINATION_LIMIT && (
         <Pagination page={page} total={data.found} onChange={setPage} />
       )}
     </Layout>

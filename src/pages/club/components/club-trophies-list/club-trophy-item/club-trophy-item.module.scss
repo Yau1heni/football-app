@@ -9,7 +9,9 @@
   background: $color-background;
   border-radius: $border-radius;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  transition:
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 
   &:hover {
     box-shadow: 0 4px 12px rgba(81, 133, 129, 0.15);

@@ -7,7 +7,7 @@ import styles from './layout.module.scss';
 export const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className={styles.layout}>
-      <Header name={'user'} />
+      <Header />
       <main>
         <Container>{children}</Container>
       </main>

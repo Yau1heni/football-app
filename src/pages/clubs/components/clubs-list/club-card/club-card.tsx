@@ -19,7 +19,6 @@ export const ClubCard: FC<ClubCardProps> = (props) => {
   return (
     <Link key={club.id} to={routes.club.create(club.id)}>
       <Card
-        key={club.id}
         title={club.name}
         image={club.logo || DEFAULT_CLUB_IMAGE}
         subtitle={club.country}

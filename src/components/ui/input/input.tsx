@@ -17,7 +17,7 @@ export type InputProps = Omit<InputHTMLAttributes<HTMLInputElement>, 'onChange' 
 export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
   const { value, onChange, afterSlot, className, error, ...rest } = props;
 
-  const handleOnchange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleOnChange = (e: ChangeEvent<HTMLInputElement>) => {
     onChange(e.currentTarget.value);
   };
 
@@ -27,7 +27,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         className={cn(styles.input, value && styles.notEmpty, error && styles.inputError)}
         value={value}
         ref={ref}
-        onChange={handleOnchange}
+        onChange={handleOnChange}
         type="text"
         {...rest}
       />
