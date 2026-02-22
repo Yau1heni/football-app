@@ -6,14 +6,20 @@
   flex-wrap: wrap;
   gap: $space-xl;
   align-items: flex-start;
+
+  @include tablet {
+    justify-content: space-between;
+  }
+
+  @include mobile {
+    flex-direction: column;
+  }
 }
 
 .infoBlock {
   display: flex;
   flex-direction: column;
   gap: $space-xs;
-  flex: 1;
-  min-width: 200px;
 }
 
 .infoRow {

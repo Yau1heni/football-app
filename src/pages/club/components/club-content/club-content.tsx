@@ -50,16 +50,14 @@ export const ClubContent: FC = () => {
       <PageTitle title={club.name || 'Club'} teamColors={club.colors} />
       <div className={styles.header}>
         <ClubLogo logo={club.logo} />
-        <div className={styles.descriptionBlock}>
-          <ClubDescription
-            ground={club.ground}
-            country={club.country}
-            founded={club.founded}
-            city={club.city}
-            website={club.website}
-            social={club.social}
-          />
-        </div>
+        <ClubDescription
+          ground={club.ground}
+          country={club.country}
+          founded={club.founded}
+          city={club.city}
+          website={club.website}
+          social={club.social}
+        />
       </div>
 
       {club.trophies.length > 0 && <ClubTrophiesList trophies={club.trophies} />}

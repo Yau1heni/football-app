@@ -1,29 +1,23 @@
 @use 'styles/mixins.scss' as *;
+@use 'styles/variables' as *;
 
 .socialLinks {
   .socialLink {
     display: flex;
     align-items: center;
-    gap: 4px;
-    margin-bottom: 8px;
-    margin-right: 20px;
+    gap: $space-xxs;
+    margin-bottom: $space-xxs;
 
     .socialName {
       @include mobile {
-        margin-right: 0;
+        display: none;
       }
-    }
-  }
-
-  .socialName {
-    @include mobile {
-      display: none;
     }
   }
 
   @include mobile {
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    gap: $space-xxs;
   }
 }

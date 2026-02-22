@@ -14,16 +14,14 @@ export const ClubContentSkeleton: FC = () => (
       <div className={styles.imageContainer}>
         <Skeleton variant="circular" width={280} height={280} className={styles.logo} />
       </div>
-      <div className={styles.descriptionBlock}>
-        <ContentContainer title={'Информация о клубу'}>
-          <Skeleton variant="text" width="50%" />
-          <Skeleton variant="text" width="50%" />
-          <Skeleton variant="text" width="50%" />
-          <Skeleton variant="text" width="50%" />
-          <Skeleton variant="text" width="50%" />
-          <Skeleton variant="text" width="30%" />
-        </ContentContainer>
-      </div>
+      <ContentContainer title={'Информация о клубу'}>
+        <Skeleton variant="text" width="50%" />
+        <Skeleton variant="text" width="50%" />
+        <Skeleton variant="text" width="50%" />
+        <Skeleton variant="text" width="50%" />
+        <Skeleton variant="text" width="50%" />
+        <Skeleton variant="text" width="30%" />
+      </ContentContainer>
     </header>
     <ClubTrophiesListSkeleton />
     <ContentContainer title={'История'}>
