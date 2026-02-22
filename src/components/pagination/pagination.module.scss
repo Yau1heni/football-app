@@ -6,11 +6,7 @@
   gap: $space-xxs;
   align-items: center;
   justify-content: center;
-  padding: $space-xs;
-
-  @include mobile {
-    gap: $space-xs;
-  }
+  padding: $space-xs 0;
 }
 
 .arrowButton {

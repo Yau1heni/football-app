@@ -9,7 +9,9 @@ export const ClubsListSkeleton: FC = () => (
   <div className={styles.clubsList}>
     <div className={styles.list}>
       {Array.from({ length: SKELETON_CARD_COUNT }, (_, index) => (
-        <CardSkeleton key={index} />
+        <div key={index} className={styles.cardWrapper}>
+          <CardSkeleton />
+        </div>
       ))}
     </div>
   </div>

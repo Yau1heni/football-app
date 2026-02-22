@@ -28,9 +28,11 @@ export const ClubsList: FC<ClubsList> = ({ clubs, isError, isLoading }) => {
   return (
     <div className={styles.clubsList}>
       <div className={styles.list}>
-        {clubs.map((club) => {
-          return <ClubCard key={club.id} club={club} />;
-        })}
+        {clubs.map((club) => (
+          <div key={club.id} className={styles.cardWrapper}>
+            <ClubCard club={club} />
+          </div>
+        ))}
       </div>
     </div>
   );

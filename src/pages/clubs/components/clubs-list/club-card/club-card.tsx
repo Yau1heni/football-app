@@ -10,7 +10,7 @@ import type { Club } from 'types/clubs.types.ts';
 
 type ClubCardProps = {
   club: Club;
-  isFavorite?: boolean;
+  isFavorite?: boolean; // фича добавить в избранное в разработке
 };
 
 export const ClubCard: FC<ClubCardProps> = (props) => {
