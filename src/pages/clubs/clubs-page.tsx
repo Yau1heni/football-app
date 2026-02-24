@@ -1,12 +1,10 @@
 import { PAGINATION_LIMIT } from 'constants/pagination.ts';
 
-import { clubsApi } from 'api/clubs-api.ts';
 import { Layout } from 'components/layout';
 import { PageTitle } from 'components/page-title';
 import { Pagination } from 'components/pagination';
-import { useAsync } from 'hooks/use-async.ts';
 import { usePageMeta } from 'hooks/use-page-meta.ts';
-import type { GetClubsResponse } from 'types/clubs.types.ts';
+import { useClubsQuery } from 'queries/clubs';
 
 import { ClubsList } from './components/clubs-list';
 import { Filters } from './components/filters';
@@ -17,10 +15,7 @@ export const ClubsPage = () => {
 
   usePageMeta({ title: 'Клубы | #iLoveThisGame', description: 'Список футбольных клубов' });
 
-  const { data, isLoading, isError } = useAsync<GetClubsResponse>(
-    () => clubsApi.getFromTypesense({ page, searchTerm }),
-    [searchTerm, page]
-  );
+  const { data, isLoading, isError } = useClubsQuery(page, searchTerm);
 
   return (
     <Layout>

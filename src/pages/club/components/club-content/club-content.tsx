@@ -1,12 +1,10 @@
-import { clubsApi } from 'api/clubs-api.ts';
 import { ClubLogo } from 'components/club-logo';
 import { PageTitle } from 'components/page-title';
 import { StateMessage } from 'components/state-message';
-import { useAsync } from 'hooks/use-async.ts';
 import { usePageMeta } from 'hooks/use-page-meta.ts';
+import { useClubQuery } from 'queries/club';
 import type { FC } from 'react';
 import { useParams } from 'react-router';
-import type { Club } from 'types/clubs.types.ts';
 
 import { ClubDescription } from '../club-description/club-description.tsx';
 import { ClubHistory } from '../club-history/club-history.tsx';
@@ -18,20 +16,12 @@ import styles from './club-content.module.scss';
 export const ClubContent: FC = () => {
   const { id } = useParams();
 
-  const {
-    data: club,
-    isLoading,
-    isError,
-  } = useAsync<Club | null>(() => (id ? clubsApi.getClub(id) : Promise.resolve(null)), [id]);
+  const { data: club, isLoading, isError } = useClubQuery(id);
 
   usePageMeta({
     title: club ? `${club.name} | #iLoveThisGame` : undefined,
     description: club ? `${club.name} — клуб из ${club.country}` : undefined,
   });
-
-  if (!id) {
-    return <StateMessage variant="empty" title="Клуб не найден" />;
-  }
 
   if (isError) {
     return <StateMessage variant="error" title="Ошибка загрузки клуба" />;
