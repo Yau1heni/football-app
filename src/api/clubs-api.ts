@@ -16,7 +16,7 @@ type GetClubsTypesenseOptions = {
 };
 
 export const clubsApi = {
-  async getClubsFromTypesense(options: GetClubsTypesenseOptions): Promise<GetClubsResponse> {
+  async getFromTypesense(options: GetClubsTypesenseOptions): Promise<GetClubsResponse> {
     const {
       searchTerm = '',
       page = START_PAGE,

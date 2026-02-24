@@ -18,7 +18,7 @@ export const ClubsPage = () => {
   usePageMeta({ title: 'Клубы | #iLoveThisGame', description: 'Список футбольных клубов' });
 
   const { data, isLoading, isError } = useAsync<GetClubsResponse>(
-    () => clubsApi.getClubsFromTypesense({ page, searchTerm }),
+    () => clubsApi.getFromTypesense({ page, searchTerm }),
     [searchTerm, page]
   );
 
