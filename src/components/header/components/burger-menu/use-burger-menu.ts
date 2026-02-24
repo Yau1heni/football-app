@@ -3,8 +3,6 @@ import { KEYBOARD } from 'constants/keyboard.ts';
 import { useCallback, useEffect } from 'react';
 import { useState } from 'react';
 
-const BODY_SCROLL_LOCK_CLASS = 'burger-menu-open';
-
 export type UseBurgerMenuReturn = {
   isOpen: boolean;
   open: () => void;
@@ -26,13 +24,9 @@ export function useBurgerMenu(): UseBurgerMenuReturn {
       if (e.key === KEYBOARD.ESC) close();
     };
 
-    document.body.classList.add(BODY_SCROLL_LOCK_CLASS);
     document.addEventListener('keydown', handleEscape);
 
-    return () => {
-      document.body.classList.remove(BODY_SCROLL_LOCK_CLASS);
-      document.removeEventListener('keydown', handleEscape);
-    };
+    return () => document.removeEventListener('keydown', handleEscape);
   }, [isOpen, close]);
 
   return { isOpen, open, close, toggle };

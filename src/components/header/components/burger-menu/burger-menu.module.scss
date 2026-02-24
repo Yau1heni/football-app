@@ -1,6 +1,10 @@
 @use 'styles/variables.scss' as *;
 @use 'styles/mixins' as *;
 
+:global(body:has([data-burger-panel][data-visible])) {
+  overflow: hidden;
+}
+
 .burgerButton {
   display: none;
   flex-direction: column;
@@ -105,29 +109,4 @@
   flex: 1;
   min-height: 0;
   gap: $space-xl;
-
-  > nav {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: $space-xxs;
-    flex: 1 1 auto;
-    overflow-y: auto;
-
-    a {
-      display: block;
-      padding: $space-s $space-xxs;
-      border-radius: $border-radius;
-      transition: background-color 0.2s ease;
-
-      &:hover {
-        background-color: $color-primary-overlay;
-      }
-    }
-  }
-
-  > div:last-child {
-    flex-shrink: 0;
-    margin-top: auto;
-  }
 }

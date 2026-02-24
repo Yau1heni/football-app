@@ -29,6 +29,7 @@ export const BurgerMenu: FC<BurgerMenuProps> = ({ children }) => {
       <div
         className={styles.panel}
         data-visible={isOpen || undefined}
+        data-burger-panel
         role="dialog"
         aria-modal="true"
         aria-label="Меню навигации"

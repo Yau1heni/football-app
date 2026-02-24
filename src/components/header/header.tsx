@@ -26,7 +26,7 @@ export const Header: FC = () => {
             <Navigation />
           </nav>
           <BurgerMenu>
-            <Navigation className={styles.panelNav} />
+            <Navigation variant="panel" />
           </BurgerMenu>
         </div>
       </Container>

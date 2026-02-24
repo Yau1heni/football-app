@@ -29,30 +29,4 @@
       display: none;
     }
   }
-
-  .panelNav {
-    display: flex;
-    flex-direction: column;
-    align-items: stretch;
-    gap: $space-xxs;
-
-    a {
-      display: block;
-      padding: $space-s $space-xxs;
-      border-radius: $border-radius;
-      transition: background-color 0.2s ease;
-
-      &:hover {
-        background-color: $color-primary-overlay;
-      }
-    }
-  }
-}
-
-.panelControls {
-  display: flex;
-  justify-content: space-between;
-  align-items: start;
-  padding-top: $space-m;
-  border-top: 1px solid $color-grey;
 }

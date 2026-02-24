@@ -8,16 +8,20 @@ import styles from './navigation.module.scss';
 
 export type NavigationProps = {
   className?: string;
+  /** Вариант для отображения в панели бургер-меню (колонка, стили ссылок) */
+  variant?: 'default' | 'panel';
 };
 
-export const Navigation: FC<NavigationProps> = ({ className }) => {
+export const Navigation: FC<NavigationProps> = ({ className, variant = 'default' }) => {
   const { pathname } = useLocation();
 
-  const finallyClassName = cn(styles.navigation, className);
+  const isPanel = variant === 'panel';
+  const finallyClassName = cn(styles.navigation, isPanel && styles.navigationPanel, className);
+  const linkClassName = isPanel ? styles.navigationPanelLink : undefined;
 
   const navList = navigationConfig.map(({ title, to }, i) => {
     return (
-      <Link to={to} key={i}>
+      <Link to={to} key={i} className={linkClassName}>
         <Typography color={pathname === to ? 'accent' : 'primary'} view={'p-16'}>
           {title}
         </Typography>
