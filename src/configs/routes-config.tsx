@@ -1,3 +1,4 @@
+import { ProtectedRoute } from 'components/protected-route';
 import { routes } from 'configs/routes.ts';
 import { ArticlesPage } from 'pages/articles';
 import { ClubPage } from 'pages/club';
@@ -16,11 +17,19 @@ export const routesConfig: RouteObject[] = [
     children: [
       {
         path: routes.main.mask,
-        element: <ClubsPage />,
+        element: (
+          <ProtectedRoute>
+            <ClubsPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: routes.club.mask,
-        element: <ClubPage />,
+        element: (
+          <ProtectedRoute>
+            <ClubPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: routes.articles.mask,
