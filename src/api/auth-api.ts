@@ -8,6 +8,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   GithubAuthProvider,
+  signOut,
 } from 'firebase/auth';
 
 export type RegisterWithEmailParams = {
@@ -42,5 +43,9 @@ export const authApi = {
     const provider = new GithubAuthProvider();
     const userCredential: UserCredential = await signInWithPopup(auth, provider);
     return userCredential.user;
+  },
+
+  async logOut() {
+    await signOut(auth);
   },
 };
