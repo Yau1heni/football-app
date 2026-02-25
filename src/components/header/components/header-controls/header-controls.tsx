@@ -3,17 +3,13 @@ import { Button } from 'components/ui/button';
 import { Skeleton } from 'components/ui/skeleton';
 import { Typography } from 'components/ui/typography';
 import { routes } from 'configs/routes.ts';
+import { useAuthContext } from 'contexts/auth';
 import type { FC } from 'react';
 import { useNavigate } from 'react-router';
 
-export type HeaderControlsProps = {
-  isUserLoading: boolean;
-  username?: string | null;
-  isAuthenticated: boolean;
-};
-
-export const HeaderControls: FC<HeaderControlsProps> = (props) => {
-  const { username, isUserLoading, isAuthenticated } = props;
+export const HeaderControls: FC = () => {
+  const { user, isLoading: isUserLoading, isAuthenticated } = useAuthContext();
+  const username = user?.displayName;
 
   const navigate = useNavigate();
   const safeUsername = username === null ? 'unknown' : username;

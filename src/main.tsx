@@ -3,6 +3,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import { ErrorBoundary } from 'components/error-boundary';
 import { routesConfig } from 'configs/routes-config.tsx';
 import { clientOptions } from 'configs/tanstack-query-config.ts';
+import { AuthProvider } from 'contexts/auth';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
@@ -18,8 +19,10 @@ root.render(
   <StrictMode>
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <RouterProvider router={router} />
-        <ReactQueryDevtools />
+        <AuthProvider>
+          <RouterProvider router={router} />
+          <ReactQueryDevtools />
+        </AuthProvider>
       </QueryClientProvider>
     </ErrorBoundary>
   </StrictMode>

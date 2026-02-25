@@ -27,6 +27,7 @@
       "api": ["api/*"],
       "components": ["components/*"],
       "configs": ["configs/*"],
+      "contexts": ["contexts/*"],
       "constants": ["constants/*"],
       "hooks": ["hooks/*"],
       "pages": ["pages/*"],

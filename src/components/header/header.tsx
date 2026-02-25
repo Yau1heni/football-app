@@ -10,13 +10,7 @@ import { Link } from 'react-router';
 
 import styles from './header.module.scss';
 
-type HeaderProps = {
-  isUserLoading: boolean;
-  username?: string | null;
-  isAuthenticated: boolean;
-};
-
-export const Header: FC<HeaderProps> = (props) => {
+export const Header: FC = () => {
   return (
     <header className={styles.header}>
       <Container>
@@ -31,12 +25,12 @@ export const Header: FC<HeaderProps> = (props) => {
             <Navigation />
           </div>
           <div className={styles.desktopControls}>
-            <HeaderControls {...props} />
+            <HeaderControls />
           </div>
           <BurgerMenu>
             <Navigation variant="panel" />
             <div className={styles.burgerMenuControls}>
-              <HeaderControls {...props} />
+              <HeaderControls />
             </div>
           </BurgerMenu>
         </div>
