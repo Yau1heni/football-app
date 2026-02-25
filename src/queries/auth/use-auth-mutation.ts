@@ -1,5 +1,5 @@
 import { useMutation } from '@tanstack/react-query';
-import { authApi } from 'api/auth-api.ts';
+import { authApi, type RegisterWithEmailParams } from 'api/auth-api.ts';
 import { routes } from 'configs/routes.ts';
 import { useNavigate } from 'react-router';
 
@@ -11,6 +11,16 @@ export const useLoginWithEmailMutation = () => {
     mutationFn: ({ email, password }: { email: string; password: string }) => {
       return authApi.loginWithEmail(email, password);
     },
+    onSuccess: () => navigate(routes.main.mask),
+  });
+};
+
+export const useRegisterWithEmailMutation = () => {
+  const navigate = useNavigate();
+
+  return useMutation({
+    mutationKey: ['registerWithEmail'],
+    mutationFn: (data: RegisterWithEmailParams) => authApi.registerWithEmail(data),
     onSuccess: () => navigate(routes.main.mask),
   });
 };

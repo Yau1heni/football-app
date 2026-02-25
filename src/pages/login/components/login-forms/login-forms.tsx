@@ -38,7 +38,7 @@ export const LoginForms: FC = () => {
     e.preventDefault();
     if (!validateAll()) return;
 
-    loginWithEmail.mutate({ email: values.email, password: values.password });
+    loginWithEmail.mutate(values);
   };
 
   return (
