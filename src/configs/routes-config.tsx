@@ -2,7 +2,9 @@ import { routes } from 'configs/routes.ts';
 import { ArticlesPage } from 'pages/articles';
 import { ClubPage } from 'pages/club';
 import { ClubsPage } from 'pages/clubs';
+import { Login } from 'pages/login';
 import { NotFound } from 'pages/not-found';
+import { Register } from 'pages/register';
 import { Navigate, type RouteObject } from 'react-router';
 
 import App from '../app.tsx';
@@ -23,6 +25,14 @@ export const routesConfig: RouteObject[] = [
       {
         path: routes.articles.mask,
         element: <ArticlesPage />,
+      },
+      {
+        path: routes.login.mask,
+        element: <Login />,
+      },
+      {
+        path: routes.register.mask,
+        element: <Register />,
       },
     ],
   },

@@ -7,3 +7,7 @@ export { ErrorIcon } from './error-icon';
 export { ArrowRightIcon } from './arrow-right-icon';
 export { CupIcon } from './cup-icon';
 export { ArrowLeftIcon } from './arrow-left-icon';
+export { EyeIcon } from './eye-icon';
+export { EyeOffIcon } from './eye-off-icon';
+export { GithubIcon } from './github-icon';
+export { GoogleIcon } from './google-icon';

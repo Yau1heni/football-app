@@ -15,6 +15,12 @@ export const routes = {
     mask: '/article/:id',
     create: (id: string) => `/article/${id}`,
   },
+  login: {
+    mask: '/login',
+  },
+  register: {
+    mask: '/register',
+  },
   notFound: {
     mask: '/not-found',
   },

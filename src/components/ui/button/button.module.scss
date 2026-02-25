@@ -28,17 +28,10 @@
 }
 
 .button_ghost {
-  padding: 0;
+  padding: 8px 12px;
   min-width: 40px;
   min-height: 40px;
   background: transparent;
-  color: $color-dark;
-  transition: background-color 0.2s ease;
-}
-
-.button_ghost:not(.buttonLoading):hover,
-.button_ghost:not(.buttonLoading):active {
-  background-color: $color-primary-overlay;
 }
 
 .button:disabled {

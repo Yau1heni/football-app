@@ -1,0 +1,16 @@
+@use 'styles/variables.scss' as *;
+
+.authContainer {
+  width: 100%;
+  max-width: 380px;
+  padding: 24px 32px;
+  background: $color-light;
+  border-radius: $border-radius;
+  margin: $space-xl auto;
+  box-shadow: 0 2px 8px $color-dark-overlay;
+
+  .title {
+    text-align: center;
+    margin: 0 0 $space-xl;
+  }
+}

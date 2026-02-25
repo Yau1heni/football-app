@@ -1,0 +1,29 @@
+@use 'styles/variables.scss' as *;
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: $space-xxs;
+  position: relative;
+
+  .label {
+    font-size: $font-size-xs;
+    font-weight: 500;
+  }
+
+  .errorMessage {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    margin-top: $space-xxs;
+    max-width: 100%;
+    font-size: $font-size-xs;
+  }
+}
+
+
+
+
+
+
+
