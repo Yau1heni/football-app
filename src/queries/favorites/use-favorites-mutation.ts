@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { favoritesApi } from 'api/favorites-api.ts';
 
-import { getFavoritesQueryKeys } from './use-favorites-query.ts';
+import { getFavoritesQueryKeys } from './keys.ts';
 
 type ToggleFavoriteParams = {
   userId: string;

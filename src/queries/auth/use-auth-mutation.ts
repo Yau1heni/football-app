@@ -1,9 +1,9 @@
-import { AUTH_MUTATION_KEYS } from 'constants/auth.ts';
-
 import { useMutation } from '@tanstack/react-query';
 import { authApi, type RegisterWithEmailParams } from 'api/auth-api.ts';
 import { routes } from 'configs/routes.ts';
 import { useNavigate } from 'react-router';
+
+import { AUTH_MUTATION_KEYS } from './keys.ts';
 
 export const useLoginWithEmailMutation = () => {
   const navigate = useNavigate();
