@@ -1,5 +1,6 @@
 import { StateMessage } from 'components/state-message';
-import { type FC } from 'react';
+import { useFavoritesContext } from 'contexts/favorites';
+import { type FC, useCallback } from 'react';
 import type { Club } from 'types/clubs.types.ts';
 
 import { ClubCard } from './club-card/club-card.tsx';
@@ -13,11 +14,18 @@ type ClubsList = {
 };
 
 export const ClubsList: FC<ClubsList> = ({ clubs, isError, isLoading }) => {
+  const { favoriteIds, isFavoritesLoading, toggleFavorite, loadingClubId } = useFavoritesContext();
+
+  const handleToggleFavorite = useCallback(
+    (clubId: string, isCurrentlyFavorite: boolean) => toggleFavorite(clubId, isCurrentlyFavorite),
+    [toggleFavorite]
+  );
+
   if (isError) {
     return <StateMessage variant="error" title="Ошибка загрузки клубов" />;
   }
 
-  if (isLoading) {
+  if (isLoading || isFavoritesLoading) {
     return <ClubsListSkeleton />;
   }
 
@@ -28,11 +36,18 @@ export const ClubsList: FC<ClubsList> = ({ clubs, isError, isLoading }) => {
   return (
     <div className={styles.clubsList}>
       <div className={styles.list}>
-        {clubs.map((club) => (
-          <div key={club.id} className={styles.cardWrapper}>
-            <ClubCard club={club} />
-          </div>
-        ))}
+        {clubs.map((club) => {
+          const isFavorite = favoriteIds.includes(club.id);
+          return (
+            <ClubCard
+              key={club.id}
+              club={club}
+              isFavorite={isFavorite}
+              onToggleFavorite={handleToggleFavorite}
+              isToggleLoading={loadingClubId === club.id}
+            />
+          );
+        })}
       </div>
     </div>
   );

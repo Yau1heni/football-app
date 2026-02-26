@@ -9,3 +9,17 @@ export const CLUBS_COLLECTIONS = {
   },
   SUBCOLLECTIONS: {},
 } as const;
+
+export const USERS_COLLECTIONS = {
+  PATH: 'users',
+  SUBCOLLECTIONS: {
+    FAVORITES: 'favorites',
+  },
+} as const;
+
+export const FAVORITES_COLLECTIONS = {
+  PATH: 'favorites',
+  FIELD_PATH: {
+    ids: 'ids',
+  },
+} as const;

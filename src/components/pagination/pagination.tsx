@@ -51,13 +51,18 @@ export const Pagination: FC<PaginationProps> = ({ total = 0, page = START_PAGE, 
       <div className={styles.paginationItems}>
         {pages.map((p, index) => (
           <Button
-            variant={'ghost'}
             key={index}
             disabled={p === '...'}
             onClick={() => onItemClick(p)}
-            className={cn(page === p && styles.active, p === '...' && styles.dots)}
+            className={cn(
+              styles.paginationItem,
+              page === p && styles.active,
+              p === '...' && styles.dots
+            )}
           >
-            <Typography view={'p-18'}>{p}</Typography>
+            <Typography view={'p-18'} color={page === p ? 'light' : 'primary'}>
+              {p}
+            </Typography>
           </Button>
         ))}
       </div>

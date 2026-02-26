@@ -22,3 +22,4 @@ export const createFirestoreConverter = <T>() => {
 };
 
 export const clubsFirestoreConverter = createFirestoreConverter<Club>();
+export const favoritesFirestoreConverter = createFirestoreConverter<{ clubId: string }>();

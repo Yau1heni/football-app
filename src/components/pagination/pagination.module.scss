@@ -20,9 +20,15 @@
   flex-wrap: wrap;
   gap: $space-xxs;
 
+  .paginationItem {
+    padding: 8px 12px;
+    background-color: transparent;
+    color: $color-dark;
+  }
+
   .active {
+    color: $color-light !important;
     background-color: $color-primary;
-    color: $color-light;
   }
 
   .dots {

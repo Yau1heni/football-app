@@ -45,6 +45,11 @@
   color: $color-grey;
 }
 
+.button_ghost:not(.buttonLoading):hover,
+.button_ghost:not(.buttonLoading):active {
+  background-color: $color-primary-overlay;
+}
+
 .button .loader {
   border-color: $color-light;
   border-top-color: transparent;
