@@ -33,6 +33,12 @@
     white-space: pre-wrap;
     word-break: break-word;
   }
+
+  .reactionSection {
+    display: flex;
+    justify-content: end;
+    padding-bottom: $space-m;
+  }
 }
 
 .coverSkeleton {

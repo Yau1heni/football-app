@@ -15,3 +15,16 @@ export type Article = {
   viewsCount: number;
   commentsCount: number;
 };
+
+export const REACTION = {
+  LIKE: 'like',
+  DISLIKE: 'dislike',
+} as const;
+
+export type ReactionType = (typeof REACTION)[keyof typeof REACTION];
+
+export type Reaction = {
+  userId: string;
+  timestamp: Timestamp;
+  type: ReactionType;
+};

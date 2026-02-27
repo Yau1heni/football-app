@@ -1,6 +1,7 @@
 import { ARTICLES_COLLECTIONS } from 'constants/firebase-collections.ts';
 import { SORT_DIRECTIONS } from 'constants/sort-direction.ts';
 
+import { reactionsApi } from 'api/reactions-api.ts';
 import { db } from 'configs/firebase-config.ts';
 import type { QueryDocumentSnapshot, QueryConstraint } from 'firebase/firestore';
 import {
@@ -13,10 +14,15 @@ import {
   query,
   startAfter,
 } from 'firebase/firestore';
-import type { Article } from 'types/articles.type.ts';
-import { articlesFirestoreConverter } from 'utils/firebase-converter.ts';
+import type { Article, Reaction, ReactionType } from 'types/articles.type.ts';
+import {
+  articlesFirestoreConverter,
+  userReactionByArticleIdFirestoreConverter,
+} from 'utils/firebase-converter.ts';
 
 const ARTICLES_PATH = ARTICLES_COLLECTIONS.PATH;
+const REACTIONS_PATH = ARTICLES_COLLECTIONS.SUBCOLLECTIONS.REACTIONS;
+
 export const ARTICLES_PAGE_SIZE = 5;
 
 export type GetArticlesResult = {
@@ -26,10 +32,10 @@ export type GetArticlesResult = {
 };
 
 export const articlesApi = {
-  async getAll(
+  getAll: async (
     pageSize: number = ARTICLES_PAGE_SIZE,
     startAfterDoc?: QueryDocumentSnapshot<Article> | null
-  ): Promise<GetArticlesResult> {
+  ): Promise<GetArticlesResult> => {
     const articlesRef = collection(db, ARTICLES_PATH).withConverter(articlesFirestoreConverter);
 
     const queryConstraints: QueryConstraint[] = [
@@ -50,11 +56,27 @@ export const articlesApi = {
     return { articles, lastDoc, hasMore };
   },
 
-  async getById(articleId: string): Promise<Article | null> {
+  getById: async (articleId: string): Promise<Article | null> => {
     const articleRef = doc(db, ARTICLES_PATH, articleId).withConverter(articlesFirestoreConverter);
     const snapshot = await getDoc(articleRef);
     if (!snapshot.exists()) return null;
 
     return { ...snapshot.data(), id: snapshot.id };
+  },
+
+  getUserReactionById: async (articleId: string, userId: string): Promise<Reaction | null> => {
+    const reactionRef = doc(db, ARTICLES_PATH, articleId, REACTIONS_PATH, userId).withConverter(
+      userReactionByArticleIdFirestoreConverter
+    );
+
+    return reactionsApi.getUserReaction<Reaction>({ reactionRef });
+  },
+
+  setUserReaction: async (articleId: string, userId: string, type: ReactionType): Promise<void> => {
+    await reactionsApi.setUserReaction({
+      reactionRef: doc(db, ARTICLES_PATH, articleId, REACTIONS_PATH, userId),
+      parentRef: doc(db, ARTICLES_PATH, articleId),
+      type,
+    });
   },
 };

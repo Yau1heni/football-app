@@ -31,6 +31,7 @@
       "constants": ["constants/*"],
       "hooks": ["hooks/*"],
       "pages": ["pages/*"],
+      "types": ["types/*"],
       "utils": ["utils/*"],
       "styles": ["styles/*"],
       "queries": ["queries/*"]

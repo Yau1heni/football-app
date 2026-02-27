@@ -9,8 +9,10 @@ type ArticleDetailTagsProps = {
 export const ArticleDetailTags: FC<ArticleDetailTagsProps> = ({ tags }) => {
   return (
     <ul className={styles.articleDetailTags}>
-      {tags.map((tag) => (
-        <li className={styles.tag}>{tag}</li>
+      {tags.map((tag, i) => (
+        <li key={i} className={styles.tag}>
+          {tag}
+        </li>
       ))}
     </ul>
   );

@@ -29,5 +29,7 @@ export const ARTICLES_COLLECTIONS = {
   FIELD_PATH: {
     TIMESTAMP: 'timestamp',
   },
-  SUBCOLLECTIONS: {},
+  SUBCOLLECTIONS: {
+    REACTIONS: 'reactions',
+  },
 } as const;

@@ -45,9 +45,12 @@
   color: $color-grey;
 }
 
-.button_ghost:not(.buttonLoading):hover,
+.button_ghost:not(.buttonLoading):hover {
+  color: $color-primary-hover;
+}
+
 .button_ghost:not(.buttonLoading):active {
-  background-color: $color-primary-overlay;
+  color: $color-primary-active;
 }
 
 .button .loader {

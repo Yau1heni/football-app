@@ -11,3 +11,5 @@ export { EyeIcon } from './eye-icon';
 export { EyeOffIcon } from './eye-off-icon';
 export { GithubIcon } from './github-icon';
 export { GoogleIcon } from './google-icon';
+export { DislikeIcon } from './dislike-icon';
+export { LikeIcon } from './like-icon';
