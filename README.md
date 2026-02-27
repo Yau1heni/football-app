@@ -1,73 +1,59 @@
-# React + TypeScript + Vite
+# #iLoveThisGame — Футбольные клубы
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Приложение о футбольных клубах, разработаное с помощью React + TypeScript + Vite.
 
-Currently, two official plugins are available:
+## Основные возможности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Список клубов** — просмотр клубов с полнотекстовым поиском и пагинацией
+- **Страница клуба** — детальная информация: логотип, описание, страна, стадион, основание, город, сайт, соцсети, трофеи, история
+- **Поиск** — быстрый поиск по названию клубов (Typesense)
 
-## React Compiler
+Технологии: React 19, TypeScript, Vite, Firebase Firestore, Typesense, React Router, SCSS.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Запуск
 
-## Expanding the ESLint configuration
+### Требования
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js (рекомендуется LTS)
+- [Yarn](https://yarnpkg.com/)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 1. Установка зависимостей
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Настройка окружения
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Создайте файл `.env.local` в корне проекта и задайте необходимые переменные окружения (значения берутся из консолей Firebase и Typesense).
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 3. Запуск в режиме разработки
+
+```bash
+yarn dev
 ```
+
+Приложение откроется по адресу, указанному в выводе команды (по умолчанию `http://localhost:5173`).
+
+### 4. Сборка для продакшена
+
+```bash
+yarn build
+```
+
+### 5. Превью продакшен-сборки
+
+```bash
+yarn preview
+```
+
+## Скрипты
+
+| Команда         | Описание                            |
+|-----------------|-------------------------------------|
+| `yarn dev`      | Запуск dev-сервера с HMR            |
+| `yarn build`    | Сборка проекта                      |
+| `yarn preview`  | Локальный превью production-сборки  |
+| `yarn lint`     | Проверка кода ESLint                |
+| `yarn lint:fix` | Исправление ESLint-ошибок           |
+| `yarn prettier` | Форматирование кода Prettier        |

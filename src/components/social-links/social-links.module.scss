@@ -1,0 +1,23 @@
+@use 'styles/mixins.scss' as *;
+@use 'styles/variables' as *;
+
+.socialLinks {
+  .socialLink {
+    display: flex;
+    align-items: center;
+    gap: $space-xxs;
+    margin-bottom: $space-xxs;
+
+    .socialName {
+      @include mobile {
+        display: none;
+      }
+    }
+  }
+
+  @include mobile {
+    display: flex;
+    flex-direction: row;
+    gap: $space-xxs;
+  }
+}

@@ -1,0 +1,7 @@
+@use 'styles/variables.scss' as *;
+
+.clubTrophiesList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-m;
+}

@@ -1,0 +1,25 @@
+@use 'styles/variables.scss' as *;
+
+.navigation {
+  display: flex;
+  gap: $space-m;
+}
+
+.navigationPanel {
+  flex-direction: column;
+  align-items: stretch;
+  gap: $space-xxs;
+  flex: 1 1 auto;
+  overflow-y: auto;
+}
+
+.navigationPanelLink {
+  display: block;
+  padding: $space-s $space-xxs;
+  border-radius: $border-radius;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $color-primary-overlay;
+  }
+}

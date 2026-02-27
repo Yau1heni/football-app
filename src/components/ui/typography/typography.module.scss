@@ -1,0 +1,72 @@
+@use 'styles/variables.scss' as *;
+
+.text {
+  font-family: $font-family, sans-serif;
+  font-weight: 400;
+  word-break: break-word;
+  color: $color-dark;
+}
+
+.view-title {
+  font-weight: 700;
+  font-size: $font-size-title;
+  line-height: 109%;
+}
+
+.view-sectionTitle {
+  font-weight: 700;
+  font-size: $font-size-section-title;
+}
+
+.view-button {
+  font-size: $font-size-m;
+  line-height: 100%;
+}
+
+.view-p-20 {
+  font-size: $font-size-l;
+  line-height: 120%;
+}
+
+.view-p-18 {
+  font-size: $font-size-m;
+  line-height: 122%;
+}
+
+.view-p-16 {
+  font-size: $font-size-s;
+  line-height: 125%;
+}
+
+.view-p-14 {
+  font-size: $font-size-xs;
+  line-height: 129%;
+}
+
+.weight-normal {
+  font-weight: 400;
+}
+
+.weight-medium {
+  font-weight: 500;
+}
+
+.weight-bold {
+  font-weight: 700;
+}
+
+.color-primary {
+  color: $color-dark;
+}
+
+.color-secondary {
+  color: $color-secondary;
+}
+
+.color-accent {
+  color: $color-primary;
+}
+
+.color-error {
+  color: $color-error;
+}

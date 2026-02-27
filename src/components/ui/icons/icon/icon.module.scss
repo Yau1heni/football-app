@@ -1,0 +1,21 @@
+@use 'styles/variables.scss' as *;
+
+.icon {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.primary {
+  stroke: $color-dark;
+  fill: transparent;
+}
+
+.secondary {
+  stroke: $color-secondary;
+  fill: transparent;
+}
+
+.accent {
+  stroke: $color-primary;
+  fill: transparent;
+}

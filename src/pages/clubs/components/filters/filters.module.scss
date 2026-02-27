@@ -1,0 +1,33 @@
+@use 'styles/mixins.scss' as *;
+@use 'styles/variables.scss' as *;
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  gap: $space-l $space-m;
+  max-width: 100%;
+  margin-bottom: $space-l;
+}
+
+.filtersRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-l $space-m;
+}
+
+.dropdown {
+  flex: 1 1 0;
+  min-width: 300px;
+}
+
+.favoritesLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-s;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.resetBtn {
+  margin-left: auto;
+}

@@ -1,10 +1,19 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
-import './index.css'
-import App from './App.tsx'
+import { ErrorBoundary } from 'components/error-boundary';
+import { routesConfig } from 'configs/routes-config.tsx';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router';
 
-createRoot(document.getElementById('root')!).render(
+import 'styles/styles.scss';
+
+const router = createBrowserRouter(routesConfig);
+
+const root = createRoot(document.getElementById('root') as HTMLDivElement);
+
+root.render(
   <StrictMode>
-    <App />
-  </StrictMode>,
-)
+    <ErrorBoundary>
+      <RouterProvider router={router} />
+    </ErrorBoundary>
+  </StrictMode>
+);

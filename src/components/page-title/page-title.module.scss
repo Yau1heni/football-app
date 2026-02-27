@@ -1,0 +1,17 @@
+@use 'styles/variables.scss' as *;
+@use 'styles/mixins.scss' as *;
+
+.pageTitle {
+  display: flex;
+  align-items: center;
+  gap: $space-m;
+
+  .title {
+    font-size: $font-size-title;
+    line-height: 109%;
+
+    @include mobile {
+      font-size: $font-size-xl;
+    }
+  }
+}

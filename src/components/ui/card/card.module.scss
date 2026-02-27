@@ -1,0 +1,118 @@
+@use 'styles/variables.scss' as *;
+@use 'styles/mixins.scss' as *;
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  cursor: pointer;
+  background: $color-light;
+  border-radius: $border-radius;
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+  @include mobile {
+    flex-direction: column;
+  }
+
+  &:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+  }
+
+  .image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: $color-grey;
+    border-radius: $border-radius $border-radius 0 0;
+
+    @include tablet {
+      width: 50%;
+      height: auto;
+      aspect-ratio: 1;
+      min-width: 0;
+    }
+
+    @include mobile {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1;
+    }
+
+    .statusSlot {
+      position: absolute;
+      top: $space-xs;
+      right: $space-xs;
+      z-index: 1;
+      padding: 4px 8px;
+      font-size: $font-size-xs;
+      font-weight: 500;
+      color: $color-light;
+      background: $color-primary;
+      border-radius: 4px;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  .cardBody {
+    padding: $space-xl $space-xs;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    min-width: 0;
+
+    @include tablet {
+      width: 50%;
+    }
+
+    @include mobile {
+      width: 100%;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: $space-xxs;
+      margin-bottom: $space-l;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .subTitle {
+      color: $color-secondary;
+    }
+
+    .captionSlot {
+      font-weight: 500;
+      font-size: $font-size-xs;
+      color: $color-secondary;
+      min-width: 0;
+      overflow: hidden;
+    }
+
+    .footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+
+      .contentSlot {
+        font-weight: 700;
+        font-size: $font-size-m;
+        line-height: 122%;
+      }
+    }
+  }
+}

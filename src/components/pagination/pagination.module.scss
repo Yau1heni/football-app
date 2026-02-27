@@ -1,0 +1,34 @@
+@use 'styles/variables.scss' as *;
+@use 'styles/mixins.scss' as *;
+
+.pagination {
+  display: flex;
+  gap: $space-xxs;
+  align-items: center;
+  justify-content: center;
+  padding: $space-xs 0;
+}
+
+.arrowButton {
+  @include mobile {
+    display: none;
+  }
+}
+
+.paginationItems {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-xxs;
+
+  .active {
+    background-color: $color-primary;
+    color: $color-light;
+  }
+
+  .dots {
+    cursor: default;
+    color: $color-dark;
+    background-color: transparent;
+    border: none;
+  }
+}
