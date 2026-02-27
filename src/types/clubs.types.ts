@@ -1,8 +1,6 @@
 import type { SOCIAL_ICONS } from 'constants/social-icons.ts';
-import type { SORT_DIRECTIONS } from 'constants/sort-direction.ts';
 
 import type { Timestamp } from 'firebase/firestore';
-import type { ClubFields } from 'types/firebase-collections.types.ts';
 
 export type Club = {
   id: string;
@@ -32,5 +30,10 @@ export type GetClubsResponse = {
 export type SocialIconType = { name: string; link: string };
 export type SocialIconsNames = keyof typeof SOCIAL_ICONS;
 
-export type SortDirection = (typeof SORT_DIRECTIONS)[keyof typeof SORT_DIRECTIONS];
-export type SortBy = `${ClubFields}:${SortDirection}`;
+export type GetClubsTypesenseOptions = {
+  searchTerm: string;
+  page: number;
+  sort?: string;
+  countries?: string[];
+  favoritesIds?: string[];
+};

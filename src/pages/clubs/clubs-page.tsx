@@ -6,24 +6,24 @@ import { Pagination } from 'components/pagination';
 import { usePageMeta } from 'hooks/use-page-meta.ts';
 import { useClubsQuery } from 'queries/clubs';
 
+import { ClubsFilters } from './components/clubs-filters';
 import { ClubsList } from './components/clubs-list';
-import { Filters } from './components/filters';
 import { useClubsFilters } from './use-clubs-filters.ts';
 
 export const ClubsPage = () => {
-  const { page, searchTerm, applySearch, setPage } = useClubsFilters();
+  const { queryOptions, setPage } = useClubsFilters();
 
   usePageMeta({ title: 'Клубы | #iLoveThisGame', description: 'Список футбольных клубов' });
 
-  const { data, isLoading, isError } = useClubsQuery(page, searchTerm);
+  const { data, isLoading, isError } = useClubsQuery(queryOptions);
 
   return (
     <Layout>
       <PageTitle title={'Клубы'} />
-      <Filters initialSearch={searchTerm} onApplySearch={applySearch} />
+      <ClubsFilters />
       <ClubsList clubs={data?.clubsData || []} isLoading={isLoading} isError={isError} />
       {data != null && data.found > PAGINATION_LIMIT && (
-        <Pagination page={page} total={data.found} onChange={setPage} />
+        <Pagination page={queryOptions.page} total={data.found} onChange={setPage} />
       )}
     </Layout>
   );

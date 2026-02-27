@@ -1,7 +1,7 @@
 @use 'styles/mixins.scss' as *;
 @use 'styles/variables.scss' as *;
 
-.filters {
+.clubsFilters {
   display: flex;
   flex-direction: column;
   gap: $space-l $space-m;
