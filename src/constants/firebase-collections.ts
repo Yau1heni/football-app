@@ -23,3 +23,11 @@ export const FAVORITES_COLLECTIONS = {
     ids: 'ids',
   },
 } as const;
+
+export const ARTICLES_COLLECTIONS = {
+  PATH: 'articles',
+  FIELD_PATH: {
+    TIMESTAMP: 'timestamp',
+  },
+  SUBCOLLECTIONS: {},
+} as const;

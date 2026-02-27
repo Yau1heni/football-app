@@ -1,0 +1,14 @@
+import { STALE_TIME_MS } from 'constants/queries.ts';
+
+import { useQuery } from '@tanstack/react-query';
+import { articlesApi } from 'api/articles-api.ts';
+
+import { getArticleQueryKeys } from './keys.ts';
+
+export const useArticleQuery = (articleId: string) => {
+  return useQuery({
+    queryKey: getArticleQueryKeys(articleId),
+    queryFn: () => articlesApi.getById(articleId),
+    staleTime: STALE_TIME_MS,
+  });
+};
