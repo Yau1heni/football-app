@@ -1,0 +1,12 @@
+@use 'styles/variables.scss' as *;
+
+.articlesList {
+  position: relative;
+}
+
+.articleCardContainer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}

@@ -1,0 +1,41 @@
+@use 'styles/variables.scss' as *;
+
+.articleDetail {
+  width: 100%;
+  max-width: 720px;
+  margin: 0 auto;
+
+  .articleMeta {
+    padding-bottom: $space-l;
+    margin-bottom: $space-l;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $space-s;
+    border-bottom: 1px solid $color-grey;
+  }
+
+  .articleCover {
+    aspect-ratio: 16 / 10;
+    border-radius: $border-radius;
+    overflow: hidden;
+    background: $color-grey;
+    margin: 0 auto $space-xl;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .articleContent {
+    white-space: pre-wrap;
+    word-break: break-word;
+  }
+}
+
+.coverSkeleton {
+  width: 100%;
+  height: 100%;
+}

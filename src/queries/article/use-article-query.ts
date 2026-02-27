@@ -8,6 +8,7 @@ import { getArticleQueryKeys } from './keys.ts';
 export const useArticleQuery = (articleId: string) => {
   return useQuery({
     queryKey: getArticleQueryKeys(articleId),
+    enabled: !!articleId,
     queryFn: () => articlesApi.getById(articleId),
     staleTime: STALE_TIME_MS,
   });
