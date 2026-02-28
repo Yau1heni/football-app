@@ -1,4 +1,4 @@
-import { DEFAULT_CLUB_IMAGE } from 'constants/images.ts';
+import { DEFAULT_ARTICLE_IMAGE } from 'constants/images.ts';
 
 import { Typography } from 'components/ui/typography';
 import { routes } from 'configs/routes.ts';
@@ -17,7 +17,10 @@ export const ArticleCard: FC<ArticleCardProps> = memo(({ article }) => {
     <Link to={routes.article.create(article.id)} className={styles.link}>
       <article className={styles.articleCard}>
         <div className={styles.image}>
-          <img src={DEFAULT_CLUB_IMAGE} alt="article img" />
+          <img
+            src={article.coverImageUrl ? article.coverImageUrl : DEFAULT_ARTICLE_IMAGE}
+            alt="article img"
+          />
         </div>
         <div className={styles.articleCardBody}>
           <Typography tag="h2" view="p-20" weight="bold" maxLines={2}>

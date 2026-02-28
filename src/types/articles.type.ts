@@ -28,3 +28,14 @@ export type Reaction = {
   timestamp: Timestamp;
   type: ReactionType;
 };
+
+export type ArticleComment = {
+  id: string;
+  userId: string | null;
+  name: string | null;
+  text: string | null;
+  parentCommentId: string | null;
+  timestamp: Timestamp;
+  likesCount: number;
+  dislikesCount: number;
+};

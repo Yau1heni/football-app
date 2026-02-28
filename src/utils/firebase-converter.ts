@@ -1,5 +1,5 @@
 import { type QueryDocumentSnapshot, type SnapshotOptions } from 'firebase/firestore';
-import type { Article, Reaction } from 'types/articles.type.ts';
+import type { Article, ArticleComment, Reaction } from 'types/articles.type.ts';
 import type { Club } from 'types/clubs.types.ts';
 
 // Solving the problem of entering return data.
@@ -26,3 +26,4 @@ export const clubsFirestoreConverter = createFirestoreConverter<Club>();
 export const favoritesFirestoreConverter = createFirestoreConverter<{ clubId: string }>();
 export const articlesFirestoreConverter = createFirestoreConverter<Article>();
 export const userReactionByArticleIdFirestoreConverter = createFirestoreConverter<Reaction>();
+export const commentsFirestoreConverter = createFirestoreConverter<ArticleComment>();

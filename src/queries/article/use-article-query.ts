@@ -22,3 +22,11 @@ export const useArticleUserReactionQuery = (articleId: string, userId: string) =
     staleTime: STALE_TIME_MS,
   });
 };
+
+export const useArticleCommentsQuery = (articleId: string) => {
+  return useQuery({
+    queryKey: ['articleComments', articleId],
+    enabled: !!articleId,
+    queryFn: () => articlesApi.getComments(articleId),
+  });
+};

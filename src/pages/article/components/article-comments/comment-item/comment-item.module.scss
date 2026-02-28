@@ -1,0 +1,25 @@
+.root {
+  padding: 12px 0;
+  padding-left: 12px;
+  border-left: 2px solid var(--color-border, #eee);
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.text {
+  margin: 0 0 8px;
+}
+
+.meta {
+  margin-bottom: 8px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}

@@ -1,0 +1,33 @@
+@use 'styles/variables.scss' as *;
+
+.textarea {
+  width: 100%;
+  min-height: 80px;
+  padding: $space-xs;
+  border: 1px solid $color-light;
+  background: $color-light;
+  border-radius: $border-radius;
+  font-family: $font-family;
+  font-weight: 400;
+  font-size: $font-size-s;
+  line-height: 125%;
+  resize: vertical;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: $color-primary;
+}
+
+.textarea::placeholder {
+  color: $color-secondary;
+}
+
+.notEmpty {
+  color: $color-dark;
+}
+
+.textareaError,
+.textareaError:focus {
+  border-color: $color-error;
+}

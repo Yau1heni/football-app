@@ -13,6 +13,7 @@ import {
 } from 'queries/article';
 import type { FC } from 'react';
 import { REACTION } from 'types/articles.type.ts';
+import { formatTimestamp } from 'utils/format-timestamp.ts';
 
 import { ArticleDetailSkeleton } from './article-detail-skeleton.tsx';
 import { ArticleDetailTags } from './article-detail-tags';
@@ -42,7 +43,7 @@ export const ArticleDetail: FC<ArticleDetailProps> = ({ articleId }) => {
     return <StateMessage variant="empty" title="Статья не найдена" />;
   }
 
-  const timestamp = article.timestamp.toDate().toLocaleDateString();
+  const timestamp = formatTimestamp(article.timestamp);
 
   const handleLike = () => {
     if (!userId) return;

@@ -14,14 +14,16 @@ import {
   query,
   startAfter,
 } from 'firebase/firestore';
-import type { Article, Reaction, ReactionType } from 'types/articles.type.ts';
+import type { Article, ArticleComment, Reaction, ReactionType } from 'types/articles.type.ts';
 import {
   articlesFirestoreConverter,
+  commentsFirestoreConverter,
   userReactionByArticleIdFirestoreConverter,
 } from 'utils/firebase-converter.ts';
 
 const ARTICLES_PATH = ARTICLES_COLLECTIONS.PATH;
 const REACTIONS_PATH = ARTICLES_COLLECTIONS.SUBCOLLECTIONS.REACTIONS;
+const COMMENTS_PATH = ARTICLES_COLLECTIONS.SUBCOLLECTIONS.COMMENTS;
 
 export const ARTICLES_PAGE_SIZE = 5;
 
@@ -78,5 +80,17 @@ export const articlesApi = {
       parentRef: doc(db, ARTICLES_PATH, articleId),
       type,
     });
+  },
+
+  getComments: async (articleId: string): Promise<ArticleComment[] | null> => {
+    const commentsRef = collection(db, ARTICLES_PATH, articleId, COMMENTS_PATH);
+    const convertedData = commentsRef.withConverter(commentsFirestoreConverter);
+    const q = query(
+      convertedData,
+      orderBy(ARTICLES_COLLECTIONS.FIELD_PATH.TIMESTAMP, SORT_DIRECTIONS.DESC)
+    );
+    const snapshot = await getDocs(q);
+
+    return snapshot.docs.map((d) => ({ ...d.data(), id: d.id }));
   },
 };
