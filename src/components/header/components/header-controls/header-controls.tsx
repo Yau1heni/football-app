@@ -1,4 +1,5 @@
 import { authApi } from 'api/auth-api.ts';
+import { ThemeToggle } from 'components/theme-toggle';
 import { Button } from 'components/ui/button';
 import { Skeleton } from 'components/ui/skeleton';
 import { Typography } from 'components/ui/typography';
@@ -20,6 +21,7 @@ export const HeaderControls: FC = () => {
 
   return (
     <>
+      <ThemeToggle />
       {isUserLoading ? (
         <Skeleton variant="text" width={80} height={20} />
       ) : (

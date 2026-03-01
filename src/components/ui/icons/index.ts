@@ -13,3 +13,5 @@ export { GithubIcon } from './github-icon';
 export { GoogleIcon } from './google-icon';
 export { DislikeIcon } from './dislike-icon';
 export { LikeIcon } from './like-icon';
+export { SunIcon } from './sun-icon';
+export { MoonIcon } from './moon-icon';

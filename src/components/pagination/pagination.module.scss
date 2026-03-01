@@ -10,6 +10,8 @@
 }
 
 .arrowButton {
+  color: $color-primary;
+
   @include mobile {
     display: none;
   }
@@ -27,13 +29,11 @@
   }
 
   .active {
-    color: $color-light !important;
     background-color: $color-primary;
   }
 
   .dots {
     cursor: default;
-    color: $color-dark;
     background-color: transparent;
     border: none;
   }

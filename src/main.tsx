@@ -5,6 +5,7 @@ import { routesConfig } from 'configs/routes-config.tsx';
 import { clientOptions } from 'configs/tanstack-query-config.ts';
 import { AuthProvider } from 'contexts/auth';
 import { FavoritesProvider } from 'contexts/favorites';
+import { ThemeProvider } from 'contexts/theme';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
@@ -20,12 +21,14 @@ root.render(
   <StrictMode>
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <FavoritesProvider>
-            <RouterProvider router={router} />
-            <ReactQueryDevtools />
-          </FavoritesProvider>
-        </AuthProvider>
+        <ThemeProvider>
+          <AuthProvider>
+            <FavoritesProvider>
+              <RouterProvider router={router} />
+              <ReactQueryDevtools />
+            </FavoritesProvider>
+          </AuthProvider>
+        </ThemeProvider>
       </QueryClientProvider>
     </ErrorBoundary>
   </StrictMode>

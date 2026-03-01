@@ -16,7 +16,7 @@
   font-weight: 400;
   font-size: $font-size-m;
   line-height: 120%;
-  color: $color-light;
+  color: $color-on-primary;
 }
 
 .button_primary:not(.buttonLoading):hover {
@@ -32,6 +32,7 @@
   min-width: 40px;
   min-height: 40px;
   background: transparent;
+  color: $color-text;
 }
 
 .button:disabled {
