@@ -1,4 +1,8 @@
-import type { AddArticleCommentVariables, RemoveArticleCommentVariables } from 'queries/article';
+import type {
+  AddArticleCommentVariables,
+  RemoveArticleCommentVariables,
+  SetCommentReactionVariables,
+} from 'queries/article';
 import { createContext, useContext } from 'react';
 
 /** Обновляется при старте/конце мутации и refetch */
@@ -13,6 +17,10 @@ export type ArticleCommentsMutationContextValue = {
   removeComment: {
     isPending: boolean;
     variables: RemoveArticleCommentVariables | undefined;
+  };
+  setCommentReaction: {
+    isPending: boolean;
+    variables: SetCommentReactionVariables | undefined;
   };
 };
 

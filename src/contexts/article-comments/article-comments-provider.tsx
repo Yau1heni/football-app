@@ -2,10 +2,16 @@ import { useAuthContext } from 'contexts/auth';
 import {
   useAddArticleCommentMutation,
   useRemoveArticleCommentMutation,
+  useSetCommentReactionMutation,
   useArticleCommentsQuery,
 } from 'queries/article';
-import type { AddArticleCommentVariables, RemoveArticleCommentVariables } from 'queries/article';
+import type {
+  AddArticleCommentVariables,
+  RemoveArticleCommentVariables,
+  SetCommentReactionVariables,
+} from 'queries/article';
 import { useCallback, useMemo, type ReactNode } from 'react';
+import type { ReactionType } from 'types/articles.type.ts';
 
 import {
   ArticleCommentsDataContext,
@@ -31,6 +37,15 @@ export type ArticleCommentsContextValue = ArticleCommentsDataContextValue & {
     mutate: (commentId: string) => void;
     isPending: boolean;
     variables: RemoveArticleCommentVariables | undefined;
+  };
+  setCommentReaction: {
+    mutate: (params: {
+      commentId: string;
+      type: ReactionType;
+      previousReactionType: ReactionType | null;
+    }) => void;
+    isPending: boolean;
+    variables: SetCommentReactionVariables | undefined;
   };
 };
 
@@ -60,6 +75,11 @@ export const ArticleCommentsProvider = ({ articleId, children }: ArticleComments
     isPending: removeCommentIsPending,
     variables: removeCommentVariables,
   } = useRemoveArticleCommentMutation();
+  const {
+    mutate: setCommentReactionMutation,
+    isPending: setCommentReactionIsPending,
+    variables: setCommentReactionVariables,
+  } = useSetCommentReactionMutation();
 
   const addCommentMutate = useCallback(
     (params: { text: string; parentCommentId?: string | null }) => {
@@ -79,8 +99,25 @@ export const ArticleCommentsProvider = ({ articleId, children }: ArticleComments
     (commentId: string) => {
       removeCommentMutation({ articleId, commentId });
     },
-
     [articleId, removeCommentMutation]
+  );
+
+  const setCommentReactionMutate = useCallback(
+    (params: {
+      commentId: string;
+      type: ReactionType;
+      previousReactionType: ReactionType | null;
+    }) => {
+      if (!userId) return;
+      setCommentReactionMutation({
+        articleId,
+        userId,
+        commentId: params.commentId,
+        type: params.type,
+        previousReactionType: params.previousReactionType,
+      });
+    },
+    [articleId, userId, setCommentReactionMutation]
   );
 
   const dataValue = useMemo<ArticleCommentsDataContextValue>(
@@ -91,8 +128,17 @@ export const ArticleCommentsProvider = ({ articleId, children }: ArticleComments
       userName,
       addCommentMutate,
       removeCommentMutate,
+      setCommentReactionMutate,
     }),
-    [articleId, comments, userId, userName, addCommentMutate, removeCommentMutate]
+    [
+      articleId,
+      comments,
+      userId,
+      userName,
+      addCommentMutate,
+      removeCommentMutate,
+      setCommentReactionMutate,
+    ]
   );
 
   const mutationValue = useMemo<ArticleCommentsMutationContextValue>(
@@ -108,6 +154,10 @@ export const ArticleCommentsProvider = ({ articleId, children }: ArticleComments
         isPending: removeCommentIsPending,
         variables: removeCommentVariables,
       },
+      setCommentReaction: {
+        isPending: setCommentReactionIsPending,
+        variables: setCommentReactionVariables,
+      },
     }),
     [
       isCommentsLoading,
@@ -117,6 +167,8 @@ export const ArticleCommentsProvider = ({ articleId, children }: ArticleComments
       addCommentVariables,
       removeCommentIsPending,
       removeCommentVariables,
+      setCommentReactionIsPending,
+      setCommentReactionVariables,
     ]
   );
 
@@ -146,6 +198,11 @@ export const useArticleCommentsContext = (): ArticleCommentsContextValue => {
         mutate: data.removeCommentMutate,
         isPending: mutation.removeComment.isPending,
         variables: mutation.removeComment.variables,
+      },
+      setCommentReaction: {
+        mutate: data.setCommentReactionMutate,
+        isPending: mutation.setCommentReaction.isPending,
+        variables: mutation.setCommentReaction.variables,
       },
     }),
     [data, mutation]

@@ -26,7 +26,7 @@ import type { Article, ArticleComment, Reaction, ReactionType } from 'types/arti
 import {
   articlesFirestoreConverter,
   commentsFirestoreConverter,
-  userReactionByArticleIdFirestoreConverter,
+  userReactionByIdFirestoreConverter,
 } from 'utils/firebase-converter.ts';
 
 const ARTICLES_PATH = ARTICLES_COLLECTIONS.PATH;
@@ -76,7 +76,7 @@ export const articlesApi = {
 
   getUserReactionById: async (articleId: string, userId: string): Promise<Reaction | null> => {
     const reactionRef = doc(db, ARTICLES_PATH, articleId, REACTIONS_PATH, userId).withConverter(
-      userReactionByArticleIdFirestoreConverter
+      userReactionByIdFirestoreConverter
     );
 
     return reactionsApi.getUserReaction<Reaction>({ reactionRef });
@@ -86,6 +86,45 @@ export const articlesApi = {
     await reactionsApi.setUserReaction({
       reactionRef: doc(db, ARTICLES_PATH, articleId, REACTIONS_PATH, userId),
       parentRef: doc(db, ARTICLES_PATH, articleId),
+      type,
+    });
+  },
+
+  getUserReactionByCommentId: async (
+    articleId: string,
+    commentId: string,
+    userId: string
+  ): Promise<Reaction | null> => {
+    const reactionRef = doc(
+      db,
+      ARTICLES_PATH,
+      articleId,
+      COMMENTS_PATH,
+      commentId,
+      REACTIONS_PATH,
+      userId
+    ).withConverter(userReactionByIdFirestoreConverter);
+
+    return reactionsApi.getUserReaction<Reaction>({ reactionRef });
+  },
+
+  setUserCommentReaction: async (
+    articleId: string,
+    userId: string,
+    commentId: string,
+    type: ReactionType
+  ): Promise<void> => {
+    await reactionsApi.setUserReaction({
+      reactionRef: doc(
+        db,
+        ARTICLES_PATH,
+        articleId,
+        COMMENTS_PATH,
+        commentId,
+        REACTIONS_PATH,
+        userId
+      ),
+      parentRef: doc(db, ARTICLES_PATH, articleId, COMMENTS_PATH, commentId),
       type,
     });
   },

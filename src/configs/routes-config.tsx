@@ -34,11 +34,19 @@ export const routesConfig: RouteObject[] = [
       },
       {
         path: routes.articles.mask,
-        element: <ArticlesPage />,
+        element: (
+          <ProtectedRoute>
+            <ArticlesPage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: routes.article.mask,
-        element: <ArticlePage />,
+        element: (
+          <ProtectedRoute>
+            <ArticlePage />
+          </ProtectedRoute>
+        ),
       },
       {
         path: routes.login.mask,

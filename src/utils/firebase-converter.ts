@@ -25,5 +25,5 @@ export const createFirestoreConverter = <T>() => {
 export const clubsFirestoreConverter = createFirestoreConverter<Club>();
 export const favoritesFirestoreConverter = createFirestoreConverter<{ clubId: string }>();
 export const articlesFirestoreConverter = createFirestoreConverter<Article>();
-export const userReactionByArticleIdFirestoreConverter = createFirestoreConverter<Reaction>();
+export const userReactionByIdFirestoreConverter = createFirestoreConverter<Reaction>();
 export const commentsFirestoreConverter = createFirestoreConverter<ArticleComment>();

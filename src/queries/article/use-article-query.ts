@@ -5,6 +5,7 @@ import { articlesApi } from 'api/articles-api.ts';
 
 import {
   getArticleCommentsQueryKeys,
+  getArticleCommentsReactionQueryKeys,
   getArticleQueryKeys,
   getArticleUserReactionQueryKeys,
 } from './keys.ts';
@@ -32,5 +33,18 @@ export const useArticleCommentsQuery = (articleId: string) => {
     queryKey: getArticleCommentsQueryKeys(articleId),
     enabled: !!articleId,
     queryFn: () => articlesApi.getComments(articleId),
+  });
+};
+
+export const useArticleCommentsReactionQuery = (
+  articleId: string,
+  commentId: string,
+  userId: string
+) => {
+  return useQuery({
+    queryKey: getArticleCommentsReactionQueryKeys(articleId, commentId, userId),
+    enabled: !!articleId && !!userId && !!commentId,
+    queryFn: () => articlesApi.getUserReactionByCommentId(articleId, commentId, userId),
+    staleTime: STALE_TIME_MS,
   });
 };

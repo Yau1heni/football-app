@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import type { ArticleComment } from 'types/articles.type.ts';
+import type { ArticleComment, ReactionType } from 'types/articles.type.ts';
 
 /** Обновляется только при смене данных запроса (refetch). Не зависит от isPending/variables. */
 export type ArticleCommentsDataContextValue = {
@@ -9,6 +9,11 @@ export type ArticleCommentsDataContextValue = {
   userName: string;
   addCommentMutate: (params: { text: string; parentCommentId?: string | null }) => void;
   removeCommentMutate: (commentId: string) => void;
+  setCommentReactionMutate: (params: {
+    commentId: string;
+    type: ReactionType;
+    previousReactionType: ReactionType | null;
+  }) => void;
 };
 
 const ArticleCommentsDataContext = createContext<ArticleCommentsDataContextValue | null>(null);

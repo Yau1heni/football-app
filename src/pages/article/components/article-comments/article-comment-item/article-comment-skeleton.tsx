@@ -22,11 +22,9 @@ export const ArticleCommentSkeleton: FC<ArticleCommentSkeletonProps> = ({ depth 
       <Skeleton variant="text" width="100%" />
       <Skeleton variant="text" width="85%" />
     </div>
-    <div className={styles.meta}>
-      <Skeleton variant="text" width={140} height={14} />
-    </div>
     <div className={styles.actions}>
       <Skeleton variant="rectangular" width={70} height={32} />
+      <Skeleton variant="rectangular" width={60} height={32} />
       <Skeleton variant="rectangular" width={60} height={32} />
     </div>
   </div>
