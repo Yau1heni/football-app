@@ -12,7 +12,7 @@ type BurgerMenuProps = {
 };
 
 export const BurgerMenu: FC<BurgerMenuProps> = ({ children }) => {
-  const { isOpen, close, toggle } = useBurgerMenu();
+  const { isOpen, close, toggle, triggerRef } = useBurgerMenu();
 
   const handleOverlayClick = (e: MouseEvent) => {
     if (e.target === e.currentTarget) close();
@@ -53,6 +53,7 @@ export const BurgerMenu: FC<BurgerMenuProps> = ({ children }) => {
   return (
     <>
       <button
+        ref={triggerRef}
         type="button"
         className={styles.burgerButton}
         onClick={toggle}
