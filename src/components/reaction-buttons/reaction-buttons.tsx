@@ -37,7 +37,13 @@ export const ReactionButtons: FC<ReactionButtonsProps> = (props) => {
   const iconSize = iconSizeMap[size];
 
   return (
-    <div className={cn(styles.root, size === 's' ? styles.rootSizeS : styles.rootSizeM, className)}>
+    <div
+      className={cn(
+        styles.reactionButtons,
+        size === 's' ? styles.reactionButtonsSizeS : styles.reactionButtonsSizeM,
+        className
+      )}
+    >
       <Button
         variant={'ghost'}
         className={cn(styles.trigger, userReaction === REACTION.LIKE && styles.triggerActive)}

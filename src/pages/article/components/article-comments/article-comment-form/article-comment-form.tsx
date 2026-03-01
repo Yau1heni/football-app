@@ -3,18 +3,18 @@ import { Textarea } from 'components/ui/textarea';
 import type { FC } from 'react';
 import { useState } from 'react';
 
-import styles from './comment-form.module.scss';
+import styles from './article-comment-form.module.scss';
 
-export type CommentFormProps = {
+export type ArticleCommentFormProps = {
   /** Отправка текста комментария (родитель сам знает root или reply по контексту). */
   onSubmit: (text: string) => void;
   /** Отмена (закрыть форму, сбросить ответ). */
-  onCancel: () => void;
+  onCancel?: () => void;
   placeholder?: string;
   loading?: boolean;
 };
 
-export const CommentForm: FC<CommentFormProps> = ({
+export const ArticleCommentForm: FC<ArticleCommentFormProps> = ({
   onSubmit,
   onCancel,
   placeholder = 'Введите комментарий...',
@@ -31,7 +31,9 @@ export const CommentForm: FC<CommentFormProps> = ({
 
   const handleCancel = () => {
     setText('');
-    onCancel();
+    if (onCancel) {
+      onCancel();
+    }
   };
 
   return (

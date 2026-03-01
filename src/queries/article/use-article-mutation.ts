@@ -3,7 +3,11 @@ import { articlesApi } from 'api/articles-api.ts';
 import type { Article, ReactionType } from 'types/articles.type.ts';
 import { calculateReactionDelta } from 'utils/calculate-reaction-delta.ts';
 
-import { getArticleQueryKeys, getArticleUserReactionQueryKeys } from './keys.ts';
+import {
+  getArticleCommentsQueryKeys,
+  getArticleQueryKeys,
+  getArticleUserReactionQueryKeys,
+} from './keys.ts';
 
 export type SetArticleReactionVariables = {
   articleId: string;
@@ -51,6 +55,51 @@ export const useSetArticleReactionMutation = () => {
       queryClient.invalidateQueries({
         queryKey: getArticleUserReactionQueryKeys(variables.articleId, variables.userId),
       });
+    },
+  });
+};
+
+export type AddArticleCommentVariables = {
+  articleId: string;
+  userId: string;
+  name: string;
+  text: string;
+  parentCommentId?: string | null;
+};
+
+export const useAddArticleCommentMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ articleId, text, userId, name, parentCommentId }: AddArticleCommentVariables) =>
+      articlesApi.addComment(articleId, { userId, text, name, parentCommentId }),
+
+    onSuccess: (_commentId, variables) => {
+      queryClient.invalidateQueries({
+        queryKey: getArticleCommentsQueryKeys(variables.articleId),
+      });
+      queryClient.invalidateQueries({ queryKey: getArticleQueryKeys(variables.articleId) });
+    },
+  });
+};
+
+export type RemoveArticleCommentVariables = {
+  articleId: string;
+  commentId: string;
+};
+
+export const useRemoveArticleCommentMutation = () => {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ articleId, commentId }: RemoveArticleCommentVariables) =>
+      articlesApi.removeComment(articleId, commentId),
+
+    onSuccess: (_commentId, variables) => {
+      queryClient.invalidateQueries({
+        queryKey: getArticleCommentsQueryKeys(variables.articleId),
+      });
+      queryClient.invalidateQueries({ queryKey: getArticleQueryKeys(variables.articleId) });
     },
   });
 };

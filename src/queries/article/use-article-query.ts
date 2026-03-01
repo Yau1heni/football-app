@@ -3,7 +3,11 @@ import { STALE_TIME_MS } from 'constants/queries.ts';
 import { useQuery } from '@tanstack/react-query';
 import { articlesApi } from 'api/articles-api.ts';
 
-import { getArticleQueryKeys, getArticleUserReactionQueryKeys } from './keys.ts';
+import {
+  getArticleCommentsQueryKeys,
+  getArticleQueryKeys,
+  getArticleUserReactionQueryKeys,
+} from './keys.ts';
 
 export const useArticleQuery = (articleId: string) => {
   return useQuery({
@@ -25,7 +29,7 @@ export const useArticleUserReactionQuery = (articleId: string, userId: string) =
 
 export const useArticleCommentsQuery = (articleId: string) => {
   return useQuery({
-    queryKey: ['articleComments', articleId],
+    queryKey: getArticleCommentsQueryKeys(articleId),
     enabled: !!articleId,
     queryFn: () => articlesApi.getComments(articleId),
   });

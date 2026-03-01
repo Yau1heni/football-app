@@ -1,12 +1,12 @@
 @use 'styles/variables.scss' as *;
 
-.root {
+.reactionButtons {
   display: inline-flex;
   align-items: center;
   gap: $space-s;
 }
 
-.rootSizeS {
+.reactionButtonsSizeS {
   gap: $space-xs;
 
   .trigger {
@@ -18,7 +18,7 @@
   }
 }
 
-.rootSizeM {
+.reactionButtonsSizeM {
   .trigger {
     padding: 4px;
   }

@@ -5,5 +5,8 @@ export {
 } from 'queries/article/use-article-query.ts';
 export {
   useSetArticleReactionMutation,
-  type SetArticleReactionVariables,
+  useAddArticleCommentMutation,
+  useRemoveArticleCommentMutation,
+  type AddArticleCommentVariables,
+  type RemoveArticleCommentVariables,
 } from './use-article-mutation.ts';

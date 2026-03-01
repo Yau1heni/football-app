@@ -3,9 +3,8 @@
 .root {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  padding: 12px 0 12px 12px;
-  border-left: 2px solid var(--color-border, #eee);
+  gap: $space-xs;
+  padding: $space-xs 0;
 }
 
 .actions {

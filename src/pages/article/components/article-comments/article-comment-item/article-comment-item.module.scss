@@ -1,7 +1,9 @@
-.root {
+.articleCommentItem {
   padding: 12px 0;
-  padding-left: 12px;
-  border-left: 2px solid var(--color-border, #eee);
+
+  &.deleted {
+    opacity: 0.8;
+  }
 }
 
 .header {

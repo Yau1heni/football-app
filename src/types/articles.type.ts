@@ -38,4 +38,6 @@ export type ArticleComment = {
   timestamp: Timestamp;
   likesCount: number;
   dislikesCount: number;
+  /** При soft delete: true, контент и автор обнулены */
+  deleted?: boolean;
 };

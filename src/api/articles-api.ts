@@ -3,7 +3,14 @@ import { SORT_DIRECTIONS } from 'constants/sort-direction.ts';
 
 import { reactionsApi } from 'api/reactions-api.ts';
 import { db } from 'configs/firebase-config.ts';
-import type { QueryDocumentSnapshot, QueryConstraint } from 'firebase/firestore';
+import {
+  type QueryDocumentSnapshot,
+  type QueryConstraint,
+  setDoc,
+  serverTimestamp,
+  increment,
+  writeBatch,
+} from 'firebase/firestore';
 import {
   collection,
   doc,
@@ -13,6 +20,7 @@ import {
   orderBy,
   query,
   startAfter,
+  updateDoc,
 } from 'firebase/firestore';
 import type { Article, ArticleComment, Reaction, ReactionType } from 'types/articles.type.ts';
 import {
@@ -92,5 +100,58 @@ export const articlesApi = {
     const snapshot = await getDocs(q);
 
     return snapshot.docs.map((d) => ({ ...d.data(), id: d.id }));
+  },
+
+  async addComment(
+    articleId: string,
+    data: { userId: string; text: string; parentCommentId?: string | null; name: string }
+  ): Promise<string> {
+    const commentsRef = collection(db, ARTICLES_PATH, articleId, COMMENTS_PATH);
+    const newCommentRef = doc(commentsRef);
+    const articleRef = doc(db, ARTICLES_PATH, articleId);
+
+    await setDoc(newCommentRef, {
+      userId: data.userId,
+      name: data.name,
+      text: data.text,
+      parentCommentId: data.parentCommentId ?? null,
+      timestamp: serverTimestamp(),
+      likesCount: 0,
+      dislikesCount: 0,
+    });
+
+    await updateDoc(articleRef, { commentsCount: increment(1) });
+
+    return newCommentRef.id;
+  },
+
+  /** Мягкое удаление: данные обнуляются, дерево ответов сохраняется */
+  async removeComment(articleId: string, commentId: string): Promise<string> {
+    const commentRef = doc(db, ARTICLES_PATH, articleId, COMMENTS_PATH, commentId);
+    const reactionsRef = collection(
+      db,
+      ARTICLES_PATH,
+      articleId,
+      COMMENTS_PATH,
+      commentId,
+      REACTIONS_PATH
+    );
+
+    const reactionsSnap = await getDocs(reactionsRef);
+    const batch = writeBatch(db);
+
+    reactionsSnap.docs.forEach((d) => batch.delete(d.ref));
+    batch.update(commentRef, {
+      deleted: true,
+      userId: null,
+      name: null,
+      text: null,
+      likesCount: 0,
+      dislikesCount: 0,
+    });
+
+    await batch.commit();
+
+    return commentId;
   },
 };
