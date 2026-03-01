@@ -13,7 +13,7 @@ export const ThemeToggle: FC = () => {
 
   return (
     <Button
-      variant="ghost"
+      variant={'ghost'}
       className={styles.toggle}
       onClick={toggleTheme}
       aria-label={isDark ? 'Включить светлую тему' : 'Включить тёмную тему'}

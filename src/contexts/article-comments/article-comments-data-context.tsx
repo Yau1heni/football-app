@@ -1,5 +1,5 @@
 import { createContext, useContext } from 'react';
-import type { ArticleComment, ReactionType } from 'types/articles.type.ts';
+import type { ArticleComment, ReactionType } from 'types/articles.types.ts';
 
 /** Обновляется только при смене данных запроса (refetch). Не зависит от isPending/variables. */
 export type ArticleCommentsDataContextValue = {

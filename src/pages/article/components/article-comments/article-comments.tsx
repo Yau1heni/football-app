@@ -14,7 +14,7 @@ export const ArticleComments: FC = () => {
   };
 
   if (isCommentsError) {
-    return <StateMessage variant="error" title="Ошибка загрузки комментариев" />;
+    return <StateMessage variant={'error'} title={'Ошибка загрузки комментариев'} />;
   }
 
   if (isCommentsLoading) {

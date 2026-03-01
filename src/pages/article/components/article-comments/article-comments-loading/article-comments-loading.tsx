@@ -11,7 +11,7 @@ export const ArticleCommentsLoading: FC = () => (
       onSubmit={() => {
         /* empty */
       }}
-      placeholder="Введите комментарий..."
+      placeholder={'Введите комментарий...'}
     />
     <ArticleCommentsListSkeleton />
   </div>

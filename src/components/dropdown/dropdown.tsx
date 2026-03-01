@@ -68,22 +68,22 @@ export const Dropdown: FC<DropdownProps> = (props) => {
         readOnly
         afterSlot={
           <Button
-            type="button"
+            type={'button'}
             className={cn(styles.iconButton, open && styles.iconButtonOpen)}
             onClick={handleIconButtonClick}
             aria-expanded={open}
             tabIndex={-1}
           >
-            <ArrowDownIcon color="secondary" />
+            <ArrowDownIcon color={'secondary'} />
           </Button>
         }
-        autoComplete="off"
+        autoComplete={'off'}
       />
 
       {open && !disabled && (
         <div className={styles.list}>
           {optionsList.length === 0 ? (
-            <Typography view="p-16" className={styles.emptyOption}>
+            <Typography view={'p-16'} className={styles.emptyOption}>
               Нет вариантов
             </Typography>
           ) : (

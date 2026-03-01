@@ -19,9 +19,9 @@ export const ContentContainer: FC<ClubContentCardProps> = (props) => {
       <div className={styles.contentHeader}>
         <div>
           {isSkeleton ? (
-            <Skeleton variant="text" width={200} height={32} />
+            <Skeleton variant={'text'} width={200} height={32} />
           ) : (
-            <Typography className={styles.sectionTitle} maxLines={2} view="sectionTitle">
+            <Typography className={styles.sectionTitle} maxLines={2} view={'sectionTitle'}>
               {title}
             </Typography>
           )}

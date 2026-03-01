@@ -46,11 +46,11 @@ export const ArticleCommentForm: FC<ArticleCommentFormProps> = ({
         disabled={loading}
       />
       <div className={styles.actions}>
-        <Button variant="ghost" onClick={handleCancel} disabled={loading}>
+        <Button variant={'ghost'} onClick={handleCancel} disabled={loading}>
           Отменить
         </Button>
         <Button
-          variant="primary"
+          variant={'primary'}
           onClick={handleSubmit}
           disabled={!text.trim() || loading}
           loading={loading}

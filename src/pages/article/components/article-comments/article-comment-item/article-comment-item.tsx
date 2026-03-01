@@ -6,7 +6,7 @@ import { useArticleCommentsData, useArticleCommentsMutation } from 'contexts/art
 import { useArticleCommentsReactionQuery } from 'queries/article';
 import type { FC } from 'react';
 import { memo, useCallback } from 'react';
-import { REACTION, type ArticleComment, type ReactionType } from 'types/articles.type.ts';
+import { REACTION, type ArticleComment, type ReactionType } from 'types/articles.types.ts';
 import { formatTimestamp } from 'utils/format-timestamp.ts';
 
 import styles from './article-comment-item.module.scss';
@@ -57,23 +57,23 @@ export const ArticleCommentItem: FC<ArticleCommentItemProps> = memo((props) => {
     >
       {!isDeleted && (
         <header className={styles.header}>
-          <Typography tag="span" view="p-16" weight="medium">
+          <Typography tag={'span'} view={'p-16'} weight={'medium'}>
             {comment.name ?? 'Аноним'}
           </Typography>
           {formattedDate && (
-            <Typography tag="span" view="p-14" color="secondary">
+            <Typography tag={'span'} view={'p-14'} color={'secondary'}>
               {formattedDate}
             </Typography>
           )}
         </header>
       )}
       {isDeleted ? (
-        <Typography tag="p" view="p-16" color="secondary" className={styles.deletedText}>
+        <Typography tag={'p'} view={'p-16'} color={'secondary'} className={styles.deletedText}>
           Комментарий удалён
         </Typography>
       ) : (
         comment.text && (
-          <Typography tag="p" view="p-16" className={styles.text}>
+          <Typography tag={'p'} view={'p-16'} className={styles.text}>
             {comment.text}
           </Typography>
         )
@@ -81,7 +81,7 @@ export const ArticleCommentItem: FC<ArticleCommentItemProps> = memo((props) => {
       {!isDeleted && (
         <div className={styles.actions}>
           <ReactionButtons
-            size="m"
+            size={'m'}
             likesCount={comment.likesCount}
             dislikesCount={comment.dislikesCount}
             userReaction={userReaction}
@@ -90,12 +90,12 @@ export const ArticleCommentItem: FC<ArticleCommentItemProps> = memo((props) => {
             disabled={isReactionPending}
           />
           {onReply && (
-            <Button variant="ghost" onClick={() => onReply(comment.id)}>
+            <Button variant={'ghost'} onClick={() => onReply(comment.id)}>
               Ответить
             </Button>
           )}
           {onDelete && isOwnComment && (
-            <Button variant="ghost" onClick={() => onDelete(comment.id)}>
+            <Button variant={'ghost'} onClick={() => onDelete(comment.id)}>
               Удалить
             </Button>
           )}

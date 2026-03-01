@@ -22,7 +22,7 @@ export const ClubsList: FC<ClubsList> = ({ clubs, isError, isLoading }) => {
   );
 
   if (isError) {
-    return <StateMessage variant="error" title="Ошибка загрузки клубов" />;
+    return <StateMessage variant={'error'} title={'Ошибка загрузки клубов'} />;
   }
 
   if (isLoading || isFavoritesLoading) {
@@ -30,7 +30,7 @@ export const ClubsList: FC<ClubsList> = ({ clubs, isError, isLoading }) => {
   }
 
   if (clubs.length === 0) {
-    return <StateMessage variant="empty" title="Клубы не найдены" />;
+    return <StateMessage variant={'empty'} title={'Клубы не найдены'} />;
   }
 
   return (

@@ -5,7 +5,7 @@ import { Typography } from 'components/ui/typography';
 import { routes } from 'configs/routes.ts';
 import { type FC, memo } from 'react';
 import { Link } from 'react-router';
-import type { Article } from 'types/articles.type';
+import type { Article } from 'types/articles.types.ts';
 import { getCommentsCountLabel } from 'utils/article-comments.ts';
 import { plural } from 'utils/plural.ts';
 
@@ -22,14 +22,14 @@ export const ArticleCard: FC<ArticleCardProps> = memo(({ article }) => {
         <div className={styles.image}>
           <img
             src={article.coverImageUrl ? article.coverImageUrl : DEFAULT_ARTICLE_IMAGE}
-            alt="article img"
+            alt={'article img'}
           />
         </div>
         <div className={styles.articleCardBody}>
-          <Typography tag="h2" view="p-20" weight="bold" maxLines={2}>
+          <Typography tag={'h2'} view={'p-20'} weight={'bold'} maxLines={2}>
             {article.title}
           </Typography>
-          <Typography view="p-16" color="secondary" maxLines={3}>
+          <Typography view={'p-16'} color={'secondary'} maxLines={3}>
             {article.excerpt}
           </Typography>
           <div className={styles.meta}>

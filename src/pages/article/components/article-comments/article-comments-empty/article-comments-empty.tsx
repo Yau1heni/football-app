@@ -16,13 +16,13 @@ export const ArticleCommentsEmpty: FC<ArticleCommentsEmptyProps> = ({
   <div className={styles.articleComments}>
     <ArticleCommentForm
       onSubmit={onSubmitRoot}
-      placeholder="Введите комментарий..."
+      placeholder={'Введите комментарий...'}
       loading={isLoading}
     />
     <StateMessage
-      variant="empty"
-      title="Пока нет комментариев"
-      description="Оставьте свой комментарий"
+      variant={'empty'}
+      title={'Пока нет комментариев'}
+      description={'Оставьте свой комментарий'}
     />
   </div>
 );

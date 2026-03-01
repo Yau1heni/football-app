@@ -22,7 +22,7 @@ import {
   startAfter,
   updateDoc,
 } from 'firebase/firestore';
-import type { Article, ArticleComment, Reaction, ReactionType } from 'types/articles.type.ts';
+import type { Article, ArticleComment, Reaction, ReactionType } from 'types/articles.types.ts';
 import {
   articlesFirestoreConverter,
   commentsFirestoreConverter,

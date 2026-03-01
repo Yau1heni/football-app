@@ -42,8 +42,8 @@ export const Pagination: FC<PaginationProps> = ({ total = 0, page = START_PAGE, 
         <ArrowRightIcon
           width={32}
           height={32}
-          viewBox="0 0 32 32"
-          aria-label="перейти на прошлую страницу"
+          viewBox={'0 0 32 32'}
+          aria-label={'перейти на прошлую страницу'}
         />
       </Button>
 
@@ -75,8 +75,8 @@ export const Pagination: FC<PaginationProps> = ({ total = 0, page = START_PAGE, 
         <ArrowLeftIcon
           width={32}
           height={32}
-          viewBox="0 0 32 32"
-          aria-label="перейти на следующую страницу"
+          viewBox={'0 0 32 32'}
+          aria-label={'перейти на следующую страницу'}
         />
       </Button>
     </div>

@@ -1,7 +1,7 @@
 import { useArticleCommentsData } from 'contexts/article-comments';
 import type { FC } from 'react';
 import { memo, useMemo } from 'react';
-import type { ReactionType } from 'types/articles.type.ts';
+import type { ReactionType } from 'types/articles.types.ts';
 import { buildCommentsDisplayList } from 'utils/article-comments.ts';
 
 import { ArticleCommentRow } from '../article-comment-row';

@@ -1,7 +1,7 @@
 import { db } from 'configs/firebase-config.ts';
 import type { DocumentReference } from 'firebase/firestore';
 import { getDoc, writeBatch, increment } from 'firebase/firestore';
-import type { ReactionType } from 'types/articles.type.ts';
+import type { ReactionType } from 'types/articles.types.ts';
 import { calculateReactionDelta } from 'utils/calculate-reaction-delta.ts';
 
 export type SetUserReactionParams = {

@@ -41,11 +41,11 @@ export class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundarySt
           }}
         >
           <StateMessage
-            variant="error"
-            title="Произошла ошибка"
-            description="Попробуйте обновить страницу или повторить действие позже"
+            variant={'error'}
+            title={'Произошла ошибка'}
+            description={'Попробуйте обновить страницу или повторить действие позже'}
             action={
-              <Button type="button" variant="primary" onClick={this.handleReload}>
+              <Button type={'button'} variant={'primary'} onClick={this.handleReload}>
                 Обновить страницу
               </Button>
             }

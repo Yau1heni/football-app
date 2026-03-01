@@ -1,6 +1,6 @@
 import type { FC } from 'react';
 import { memo } from 'react';
-import type { ArticleComment, ReactionType } from 'types/articles.type.ts';
+import type { ArticleComment, ReactionType } from 'types/articles.types.ts';
 
 import { ArticleCommentForm } from '../article-comment-form';
 import { ArticleCommentItem, COMMENT_INDENT_PX } from '../article-comment-item';
@@ -47,7 +47,7 @@ export const ArticleCommentRow: FC<ArticleCommentRowProps> = memo((props) => {
           <ArticleCommentForm
             onSubmit={(text) => onSubmitReply(comment.id, text)}
             onCancel={onCancelReply}
-            placeholder="Ответ на комментарий..."
+            placeholder={'Ответ на комментарий...'}
           />
         </div>
       )}

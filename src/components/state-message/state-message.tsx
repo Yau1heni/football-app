@@ -38,11 +38,11 @@ export const StateMessage: FC<StateMessageProps> = (props) => {
       aria-live="polite"
     >
       <div className={styles.icon}>{icon}</div>
-      <Typography tag="h2" view="sectionTitle" weight="bold" className={styles.title}>
+      <Typography tag={'h2'} view={'sectionTitle'} weight={'bold'} className={styles.title}>
         {finalTitle}
       </Typography>
       {finalDescription && (
-        <Typography view="p-16" color="secondary" className={styles.description}>
+        <Typography view={'p-16'} color={'secondary'} className={styles.description}>
           {finalDescription}
         </Typography>
       )}

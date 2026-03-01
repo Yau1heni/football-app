@@ -58,7 +58,7 @@ export const AuthForms: FC<AuthFormsProps> = (props) => {
         ))}
         <Button
           className={styles.submitButton}
-          type="submit"
+          type={'submit'}
           disabled={!isValid || isLoading}
           loading={isLoading}
         >
@@ -71,8 +71,8 @@ export const AuthForms: FC<AuthFormsProps> = (props) => {
         disabled={isLoading}
       />
       {isError && (
-        <div role="alert">
-          <Typography view="p-16" color="error">
+        <div role={'alert'}>
+          <Typography view={'p-16'} color={'error'}>
             {config.errorMessage}
           </Typography>
         </div>

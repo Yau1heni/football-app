@@ -23,7 +23,7 @@ export const DropdownOptionItem: FC<DropdownOptionItemProps> = ({
 
   return (
     <div
-      role="option"
+      role={'option'}
       aria-selected={isSelected}
       className={cn(styles.option, { [styles.optionSelected]: isSelected })}
       onMouseDown={handleMouseDown}

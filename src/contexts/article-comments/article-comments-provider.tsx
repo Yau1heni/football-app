@@ -11,7 +11,7 @@ import type {
   SetCommentReactionVariables,
 } from 'queries/article';
 import { useCallback, useMemo, type ReactNode } from 'react';
-import type { ReactionType } from 'types/articles.type.ts';
+import type { ReactionType } from 'types/articles.types.ts';
 
 import {
   ArticleCommentsDataContext,

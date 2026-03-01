@@ -1,6 +1,6 @@
 import { useArticleCommentsData, useArticleCommentsMutation } from 'contexts/article-comments';
 import { type FC, memo, useCallback, useState } from 'react';
-import type { ReactionType } from 'types/articles.type.ts';
+import type { ReactionType } from 'types/articles.types.ts';
 
 import { ArticleCommentForm } from '../article-comment-form';
 import { ArticleCommentSkeleton } from '../article-comment-item';
@@ -58,7 +58,7 @@ export const ArticleCommentsList: FC = memo(() => {
     <div className={styles.articleCommentsList}>
       <ArticleCommentForm
         onSubmit={handleSubmitRoot}
-        placeholder="Введите комментарий..."
+        placeholder={'Введите комментарий...'}
         loading={addComment.isPending}
       />
       {showAddRootSkeleton && <ArticleCommentSkeleton depth={0} />}

@@ -3,7 +3,7 @@ import { Button } from 'components/ui/button';
 import { DislikeIcon, LikeIcon } from 'components/ui/icons';
 import { Typography } from 'components/ui/typography';
 import type { FC } from 'react';
-import { REACTION, type ReactionType } from 'types/articles.type.ts';
+import { REACTION, type ReactionType } from 'types/articles.types.ts';
 
 import styles from './reaction-buttons.module.scss';
 
@@ -48,7 +48,7 @@ export const ReactionButtons: FC<ReactionButtonsProps> = (props) => {
         variant={'ghost'}
         className={cn(styles.trigger, userReaction === REACTION.LIKE && styles.triggerActive)}
         onClick={onLike}
-        aria-label="Лайк"
+        aria-label={'Лайк'}
         disabled={disabled}
       >
         <LikeIcon
@@ -64,7 +64,7 @@ export const ReactionButtons: FC<ReactionButtonsProps> = (props) => {
         variant={'ghost'}
         className={cn(styles.trigger, userReaction === REACTION.DISLIKE && styles.triggerActive)}
         onClick={onDislike}
-        aria-label="Дизлайк"
+        aria-label={'Дизлайк'}
         disabled={disabled}
       >
         <DislikeIcon

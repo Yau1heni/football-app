@@ -15,14 +15,14 @@ export const OAuthButtons: FC<OAuthButtonsProps> = (props) => {
   const { onGoogleClick, onGithubClick, disabled = false } = props;
 
   return (
-    <div className={styles.oAuthButtons} role="group" aria-label="Вход через соцсети">
+    <div className={styles.oAuthButtons} role={'group'} aria-label={'Вход через соцсети'}>
       <Typography>или войти через</Typography>
       <div className={styles.buttons}>
         <Button
           variant={'ghost'}
           onClick={onGoogleClick}
           disabled={disabled}
-          aria-label="Войти через Google"
+          aria-label={'Войти через Google'}
         >
           <GoogleIcon />
           <Typography tag={'span'} className={styles.label}>
@@ -33,7 +33,7 @@ export const OAuthButtons: FC<OAuthButtonsProps> = (props) => {
           variant={'ghost'}
           onClick={onGithubClick}
           disabled={disabled}
-          aria-label="Войти через GitHub"
+          aria-label={'Войти через GitHub'}
         >
           <GithubIcon />
           <Typography tag={'span'} className={styles.label}>

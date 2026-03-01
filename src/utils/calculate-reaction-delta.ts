@@ -1,4 +1,4 @@
-import { REACTION, type ReactionType } from 'types/articles.type.ts';
+import { REACTION, type ReactionType } from 'types/articles.types.ts';
 
 export type ReactionDelta = {
   likeDelta: number;

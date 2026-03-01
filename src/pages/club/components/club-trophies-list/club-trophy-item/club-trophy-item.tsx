@@ -16,7 +16,7 @@ export const ClubTrophyItem: FC<ClubTrophyItemPropsType> = (props) => {
 
   return (
     <li className={styles.clubTrophyItem}>
-      <Typography className={styles.trophyName} tag="span">
+      <Typography className={styles.trophyName} tag={'span'}>
         {trophy.name}
       </Typography>
       <div className={styles.trophy}>

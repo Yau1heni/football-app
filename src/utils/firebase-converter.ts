@@ -1,5 +1,5 @@
 import { type QueryDocumentSnapshot, type SnapshotOptions } from 'firebase/firestore';
-import type { Article, ArticleComment, Reaction } from 'types/articles.type.ts';
+import type { Article, ArticleComment, Reaction } from 'types/articles.types.ts';
 import type { Club } from 'types/clubs.types.ts';
 
 // Solving the problem of entering return data.

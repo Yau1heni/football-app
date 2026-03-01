@@ -13,7 +13,7 @@ import {
   useSetArticleReactionMutation,
 } from 'queries/article';
 import type { FC } from 'react';
-import { REACTION } from 'types/articles.type.ts';
+import { REACTION } from 'types/articles.types.ts';
 import { getCommentsCountLabel } from 'utils/article-comments.ts';
 import { formatTimestamp } from 'utils/format-timestamp.ts';
 import { plural } from 'utils/plural.ts';
@@ -35,7 +35,7 @@ export const ArticleDetail: FC<ArticleDetailProps> = ({ articleId }) => {
   const setReaction = useSetArticleReactionMutation();
 
   if (isError) {
-    return <StateMessage variant="error" title="Ошибка загрузки статьи" />;
+    return <StateMessage variant={'error'} title={'Ошибка загрузки статьи'} />;
   }
 
   if (isLoading) {
@@ -43,7 +43,7 @@ export const ArticleDetail: FC<ArticleDetailProps> = ({ articleId }) => {
   }
 
   if (!article) {
-    return <StateMessage variant="empty" title="Статья не найдена" />;
+    return <StateMessage variant={'empty'} title={'Статья не найдена'} />;
   }
 
   const timestamp = formatTimestamp(article.timestamp);
@@ -76,7 +76,7 @@ export const ArticleDetail: FC<ArticleDetailProps> = ({ articleId }) => {
         <div className={styles.articleCover}>
           <img
             src={article.coverImageUrl ? article.coverImageUrl : DEFAULT_ARTICLE_IMAGE}
-            alt="article img"
+            alt={'article img'}
           />
         </div>
 

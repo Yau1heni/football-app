@@ -46,7 +46,7 @@ export const AuthFormField: FC<AuthFormFieldProps> = memo((props) => {
       onClick={togglePassword}
       aria-label={passwordVisible ? 'Скрыть пароль' : 'Показать пароль'}
     >
-      {passwordVisible ? <EyeOffIcon color="secondary" /> : <EyeIcon color="secondary" />}
+      {passwordVisible ? <EyeOffIcon color={'secondary'} /> : <EyeIcon color={'secondary'} />}
     </Button>
   ) : undefined;
 

@@ -27,7 +27,7 @@ export const ClubContent: FC = () => {
   });
 
   if (isError) {
-    return <StateMessage variant="error" title="Ошибка загрузки клуба" />;
+    return <StateMessage variant={'error'} title={'Ошибка загрузки клуба'} />;
   }
 
   if (isLoading) {
@@ -35,7 +35,7 @@ export const ClubContent: FC = () => {
   }
 
   if (!club) {
-    return <StateMessage variant="empty" title="Клуб не найден" />;
+    return <StateMessage variant={'empty'} title={'Клуб не найден'} />;
   }
 
   const isFavorite = favoriteIds.includes(club.id);
@@ -57,7 +57,7 @@ export const ClubContent: FC = () => {
       </div>
 
       <Button
-        variant="primary"
+        variant={'primary'}
         disabled={isPending}
         loading={isToggleLoading}
         className={styles.favoriteButton}

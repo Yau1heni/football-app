@@ -15,17 +15,17 @@ export const ArticleCommentSkeleton: FC<ArticleCommentSkeletonProps> = ({ depth 
     data-depth={depth}
   >
     <header className={styles.header}>
-      <Skeleton variant="text" width={120} height={16} />
-      <Skeleton variant="text" width={80} height={14} />
+      <Skeleton variant={'text'} width={120} height={16} />
+      <Skeleton variant={'text'} width={80} height={14} />
     </header>
     <div className={styles.text}>
-      <Skeleton variant="text" width="100%" />
-      <Skeleton variant="text" width="85%" />
+      <Skeleton variant={'text'} width={'100%'} />
+      <Skeleton variant={'text'} width={'85%'} />
     </div>
     <div className={styles.actions}>
-      <Skeleton variant="rectangular" width={70} height={32} />
-      <Skeleton variant="rectangular" width={60} height={32} />
-      <Skeleton variant="rectangular" width={60} height={32} />
+      <Skeleton variant={'rectangular'} width={70} height={32} />
+      <Skeleton variant={'rectangular'} width={60} height={32} />
+      <Skeleton variant={'rectangular'} width={60} height={32} />
     </div>
   </div>
 );

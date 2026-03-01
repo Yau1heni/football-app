@@ -13,7 +13,7 @@ export const ArticlesList: FC = () => {
   const articles = data?.pages.flatMap((page) => page.articles) ?? [];
 
   if (isError) {
-    return <StateMessage variant="error" title="Ошибка загрузки статей" />;
+    return <StateMessage variant={'error'} title={'Ошибка загрузки статей'} />;
   }
 
   if (isLoading) {
@@ -21,7 +21,7 @@ export const ArticlesList: FC = () => {
   }
 
   if (articles.length === 0) {
-    return <StateMessage variant="empty" title="Статьи не найдены" />;
+    return <StateMessage variant={'empty'} title={'Статьи не найдены'} />;
   }
 
   return (

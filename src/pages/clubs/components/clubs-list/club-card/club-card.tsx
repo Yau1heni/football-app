@@ -35,7 +35,7 @@ export const ClubCard: FC<ClubCardProps> = memo((props) => {
         subtitle={club.country}
         statusSlot={
           isFavorite && (
-            <Typography tag={'span'} color={'light'} aria-label="В избранном">
+            <Typography tag={'span'} color={'light'} aria-label={'В избранном'}>
               В избранном
             </Typography>
           )

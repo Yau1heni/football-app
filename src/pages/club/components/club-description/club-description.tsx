@@ -26,7 +26,7 @@ export const ClubDescription: FC<ClubDescriptionPropsType> = (props) => {
             <Typography tag={'span'} className={styles.label}>
               Город
             </Typography>
-            <Typography className={styles.value} tag="span">
+            <Typography className={styles.value} tag={'span'}>
               {city}
             </Typography>
           </div>
@@ -34,7 +34,7 @@ export const ClubDescription: FC<ClubDescriptionPropsType> = (props) => {
             <Typography tag={'span'} className={styles.label}>
               Страна
             </Typography>
-            <Typography className={styles.value} tag="span">
+            <Typography className={styles.value} tag={'span'}>
               {country}
             </Typography>
           </div>
@@ -42,7 +42,7 @@ export const ClubDescription: FC<ClubDescriptionPropsType> = (props) => {
             <Typography tag={'span'} className={styles.label}>
               Год основания
             </Typography>
-            <Typography className={styles.value} tag="span">
+            <Typography className={styles.value} tag={'span'}>
               {founded}
             </Typography>
           </div>
@@ -50,15 +50,15 @@ export const ClubDescription: FC<ClubDescriptionPropsType> = (props) => {
             <Typography tag={'span'} className={styles.label}>
               Стадион
             </Typography>
-            <Typography className={styles.value} tag="span">
+            <Typography className={styles.value} tag={'span'}>
               {ground}
             </Typography>
           </div>
           {website && (
             <a
               href={website}
-              target="_blank"
-              rel="noopener noreferrer"
+              target={'_blank'}
+              rel={'noopener noreferrer'}
               className={styles.websiteLink}
             >
               {website}

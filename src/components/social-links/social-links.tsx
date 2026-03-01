@@ -22,8 +22,8 @@ export const SocialLinks: FC<SocialLinksPropsType> = ({ socials }) => {
           <Link
             key={name}
             to={link}
-            target="_blank"
-            rel="noopener noreferrer"
+            target={'_blank'}
+            rel={'noopener noreferrer'}
             className={styles.socialLink}
           >
             <Icon width={24} height={24} />

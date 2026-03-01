@@ -23,7 +23,7 @@ export const HeaderControls: FC = () => {
     <>
       <ThemeToggle />
       {isUserLoading ? (
-        <Skeleton variant="text" width={80} height={20} />
+        <Skeleton variant={'text'} width={80} height={20} />
       ) : (
         <Typography>{safeUsername}</Typography>
       )}

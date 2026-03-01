@@ -43,7 +43,7 @@ export const ClubsFilters = () => {
           options={getClubsSortOptions}
           value={sortOption}
           onChange={setSortOption}
-          placeholder="Сортировка"
+          placeholder={'Сортировка'}
         />
         <MultiDropdown
           className={styles.dropdown}

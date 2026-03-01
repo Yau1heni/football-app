@@ -13,7 +13,7 @@ type AuthContainerProps = {
 export const AuthContainer: FC<AuthContainerProps> = ({ children, title, titleId }) => {
   return (
     <section className={styles.authContainer} aria-labelledby={titleId}>
-      <Typography id={titleId} tag="h1" className={styles.title} color="accent" view="p-20">
+      <Typography id={titleId} tag={'h1'} className={styles.title} color={'accent'} view={'p-20'}>
         {title}
       </Typography>
       {children}

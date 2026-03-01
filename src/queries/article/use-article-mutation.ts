@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { articlesApi } from 'api/articles-api.ts';
 import { Timestamp } from 'firebase/firestore';
-import type { Article, ArticleComment, Reaction, ReactionType } from 'types/articles.type.ts';
+import type { Article, ArticleComment, Reaction, ReactionType } from 'types/articles.types.ts';
 import { calculateReactionDelta } from 'utils/calculate-reaction-delta.ts';
 
 import {
