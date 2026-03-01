@@ -1,4 +1,5 @@
 import { DEFAULT_ARTICLE_IMAGE } from 'constants/images.ts';
+import { RU_VIEW } from 'constants/plural.ts';
 
 import { ContentContainer } from 'components/content-container';
 import { HtmlContent } from 'components/html-content';
@@ -13,7 +14,9 @@ import {
 } from 'queries/article';
 import type { FC } from 'react';
 import { REACTION } from 'types/articles.type.ts';
+import { getCommentsCountLabel } from 'utils/article-comments.ts';
 import { formatTimestamp } from 'utils/format-timestamp.ts';
+import { plural } from 'utils/plural.ts';
 
 import { ArticleDetailSkeleton } from './article-detail-skeleton.tsx';
 import { ArticleDetailTags } from './article-detail-tags';
@@ -84,7 +87,8 @@ export const ArticleDetail: FC<ArticleDetailProps> = ({ articleId }) => {
             </Typography>
           )}
           <Typography tag={'span'} color={'secondary'}>
-            {article.category} · {article.viewsCount} просмотров · {article.commentsCount} комм.
+            {article.category} · {article.viewsCount} {plural(article.viewsCount, RU_VIEW)} ·{' '}
+            {article.commentsCount} {getCommentsCountLabel(article.commentsCount)}
           </Typography>
         </div>
 

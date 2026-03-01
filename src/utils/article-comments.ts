@@ -1,4 +1,12 @@
+import { LOCALE_RU } from 'constants/plural.ts';
+import { RU_COMMENT_LABELS } from 'constants/plural.ts';
+
 import type { ArticleComment } from 'types/articles.type.ts';
+import { plural } from 'utils/plural.ts';
+
+/** Подпись количества комментариев в нужной форме (1 комментарий, 2 комментария, 5 комментариев). */
+export const getCommentsCountLabel = (count: number, locale = LOCALE_RU) =>
+  plural(count, RU_COMMENT_LABELS, locale);
 
 /** Элемент плоского списка для отрисовки: комментарий и его глубина вложенности (0 = корневой). */
 export type CommentDisplayItem = {
