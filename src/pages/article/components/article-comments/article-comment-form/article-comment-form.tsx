@@ -37,7 +37,7 @@ export const ArticleCommentForm: FC<ArticleCommentFormProps> = ({
   };
 
   return (
-    <div className={styles.root}>
+    <div className={styles.articleCommentForm}>
       <Textarea
         value={text}
         onChange={setText}
@@ -46,6 +46,9 @@ export const ArticleCommentForm: FC<ArticleCommentFormProps> = ({
         disabled={loading}
       />
       <div className={styles.actions}>
+        <Button variant="ghost" onClick={handleCancel} disabled={loading}>
+          Отменить
+        </Button>
         <Button
           variant="primary"
           onClick={handleSubmit}
@@ -53,9 +56,6 @@ export const ArticleCommentForm: FC<ArticleCommentFormProps> = ({
           loading={loading}
         >
           Отправить
-        </Button>
-        <Button variant="ghost" onClick={handleCancel} disabled={loading}>
-          Отменить
         </Button>
       </div>
     </div>

@@ -11,7 +11,7 @@
   font-weight: 400;
   font-size: $font-size-s;
   line-height: 125%;
-  resize: vertical;
+  resize: none;
 }
 
 .textarea:focus {
@@ -24,7 +24,7 @@
 }
 
 .notEmpty {
-  color: $color-dark;
+  color: $color-text;
 }
 
 .textareaError,
