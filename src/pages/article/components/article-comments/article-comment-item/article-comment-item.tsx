@@ -44,6 +44,7 @@ export const ArticleCommentItem: FC<ArticleCommentItemProps> = memo((props) => {
 
   const formattedDate = formatTimestamp(comment.timestamp);
   const isDeleted = Boolean(comment.deleted);
+  const isOwnComment = comment.userId !== null && comment.userId === userId;
 
   return (
     <article
@@ -93,7 +94,7 @@ export const ArticleCommentItem: FC<ArticleCommentItemProps> = memo((props) => {
               Ответить
             </Button>
           )}
-          {onDelete && (
+          {onDelete && isOwnComment && (
             <Button variant="ghost" onClick={() => onDelete(comment.id)}>
               Удалить
             </Button>
