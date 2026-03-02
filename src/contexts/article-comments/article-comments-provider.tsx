@@ -4,12 +4,12 @@ import {
   useRemoveArticleCommentMutation,
   useSetCommentReactionMutation,
   useArticleCommentsQuery,
-} from 'queries/article';
+} from 'queries/article-comments';
 import type {
   AddArticleCommentVariables,
   RemoveArticleCommentVariables,
   SetCommentReactionVariables,
-} from 'queries/article';
+} from 'queries/article-comments';
 import { useCallback, useMemo, type ReactNode } from 'react';
 import type { ReactionType } from 'types/articles.types.ts';
 
@@ -25,9 +25,12 @@ import {
 } from './article-comments-mutation-context.tsx';
 
 export type ArticleCommentsContextValue = ArticleCommentsDataContextValue & {
-  isCommentsLoading: boolean;
+  /** true только при первой загрузке (нет ни одной страницы), не при подгрузке «Ещё». */
+  isInitialLoading: boolean;
   isCommentsError: boolean;
-  isRefetching: boolean;
+  hasNextPage: boolean;
+  fetchNextPage: () => void;
+  isFetchingNextPage: boolean;
   addComment: {
     mutate: (params: { text: string; parentCommentId?: string | null }) => void;
     isPending: boolean;
@@ -60,11 +63,17 @@ export const ArticleCommentsProvider = ({ articleId, children }: ArticleComments
   const userName = user?.displayName ?? user?.email ?? 'Аноним';
 
   const {
-    data: comments,
-    isLoading: isCommentsLoading,
+    data,
     isError: isCommentsError,
-    isRefetching,
+    isFetching,
+    hasNextPage,
+    fetchNextPage,
+    isFetchingNextPage,
   } = useArticleCommentsQuery(articleId);
+
+  const comments = useMemo(() => data?.pages.flatMap((page) => page.comments) ?? [], [data?.pages]);
+
+  const isInitialLoading = Boolean(isFetching && !data?.pages.length);
   const {
     mutate: addCommentMutation,
     isPending: addCommentIsPending,
@@ -123,7 +132,7 @@ export const ArticleCommentsProvider = ({ articleId, children }: ArticleComments
   const dataValue = useMemo<ArticleCommentsDataContextValue>(
     () => ({
       articleId,
-      comments: comments ?? [],
+      comments: comments,
       userId,
       userName,
       addCommentMutate,
@@ -143,9 +152,11 @@ export const ArticleCommentsProvider = ({ articleId, children }: ArticleComments
 
   const mutationValue = useMemo<ArticleCommentsMutationContextValue>(
     () => ({
-      isCommentsLoading,
+      isInitialLoading,
       isCommentsError,
-      isRefetching,
+      hasNextPage: hasNextPage,
+      fetchNextPage,
+      isFetchingNextPage,
       addComment: {
         isPending: addCommentIsPending,
         variables: addCommentVariables,
@@ -160,9 +171,11 @@ export const ArticleCommentsProvider = ({ articleId, children }: ArticleComments
       },
     }),
     [
-      isCommentsLoading,
+      isInitialLoading,
       isCommentsError,
-      isRefetching,
+      hasNextPage,
+      fetchNextPage,
+      isFetchingNextPage,
       addCommentIsPending,
       addCommentVariables,
       removeCommentIsPending,

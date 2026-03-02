@@ -1,9 +1,9 @@
+import { Button } from 'components/ui/button';
 import { useArticleCommentsData, useArticleCommentsMutation } from 'contexts/article-comments';
 import { type FC, memo, useCallback, useState } from 'react';
 import type { ReactionType } from 'types/articles.types.ts';
 
 import { ArticleCommentForm } from '../article-comment-form';
-import { ArticleCommentSkeleton } from '../article-comment-item';
 
 import styles from './article-comments-list.module.scss';
 import { ArticleCommentsRows } from './article-comments-rows';
@@ -11,7 +11,8 @@ import { ArticleCommentsRows } from './article-comments-rows';
 export const ArticleCommentsList: FC = memo(() => {
   const { addCommentMutate, removeCommentMutate, setCommentReactionMutate } =
     useArticleCommentsData();
-  const { addComment } = useArticleCommentsMutation();
+  const { addComment, hasNextPage, fetchNextPage, isFetchingNextPage } =
+    useArticleCommentsMutation();
 
   const [replyingToCommentId, setReplyingToCommentId] = useState<string | null>(null);
 
@@ -52,7 +53,9 @@ export const ArticleCommentsList: FC = memo(() => {
     [setCommentReactionMutate]
   );
 
-  const showAddRootSkeleton = addComment.isPending && !addComment.variables?.parentCommentId;
+  const handleLoadMore = useCallback(() => {
+    fetchNextPage();
+  }, [fetchNextPage]);
 
   return (
     <div className={styles.articleCommentsList}>
@@ -61,7 +64,6 @@ export const ArticleCommentsList: FC = memo(() => {
         placeholder={'Введите комментарий...'}
         loading={addComment.isPending}
       />
-      {showAddRootSkeleton && <ArticleCommentSkeleton depth={0} />}
       <ArticleCommentsRows
         replyingToCommentId={replyingToCommentId}
         onReply={handleReply}
@@ -70,6 +72,11 @@ export const ArticleCommentsList: FC = memo(() => {
         onSubmitReply={handleSubmitReply}
         onReaction={handleReaction}
       />
+      {hasNextPage && (
+        <Button variant={'ghost'} onClick={handleLoadMore} disabled={isFetchingNextPage}>
+          {isFetchingNextPage ? 'Загрузка…' : 'Ещё комментарии'}
+        </Button>
+      )}
     </div>
   );
 });

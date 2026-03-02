@@ -3,7 +3,7 @@ import { ReactionButtons } from 'components/reaction-buttons';
 import { Button } from 'components/ui/button';
 import { Typography } from 'components/ui/typography';
 import { useArticleCommentsData, useArticleCommentsMutation } from 'contexts/article-comments';
-import { useArticleCommentsReactionQuery } from 'queries/article';
+import { isPendingComment, useArticleCommentsReactionQuery } from 'queries/article-comments';
 import type { FC } from 'react';
 import { memo, useCallback } from 'react';
 import { REACTION, type ArticleComment, type ReactionType } from 'types/articles.types.ts';
@@ -33,6 +33,7 @@ export const ArticleCommentItem: FC<ArticleCommentItemProps> = memo((props) => {
   const { setCommentReaction } = useArticleCommentsMutation();
   const isReactionPending =
     setCommentReaction.isPending && setCommentReaction.variables?.commentId === comment.id;
+  const isPending = isPendingComment(comment);
 
   const handleLike = useCallback(() => {
     onReaction?.(comment.id, REACTION.LIKE, userReaction);
@@ -87,14 +88,14 @@ export const ArticleCommentItem: FC<ArticleCommentItemProps> = memo((props) => {
             userReaction={userReaction}
             onLike={handleLike}
             onDislike={handleDislike}
-            disabled={isReactionPending}
+            disabled={isReactionPending || isPending}
           />
-          {onReply && (
+          {onReply && !isPending && (
             <Button variant={'ghost'} onClick={() => onReply(comment.id)}>
               Ответить
             </Button>
           )}
-          {onDelete && isOwnComment && (
+          {onDelete && isOwnComment && !isPending && (
             <Button variant={'ghost'} onClick={() => onDelete(comment.id)}>
               Удалить
             </Button>

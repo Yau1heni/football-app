@@ -2,14 +2,17 @@ import type {
   AddArticleCommentVariables,
   RemoveArticleCommentVariables,
   SetCommentReactionVariables,
-} from 'queries/article';
+} from 'queries/article-comments';
 import { createContext, useContext } from 'react';
 
 /** Обновляется при старте/конце мутации и refetch */
 export type ArticleCommentsMutationContextValue = {
-  isCommentsLoading: boolean;
+  /** true только при первой загрузке (нет страниц), не при подгрузке следующей страницы. */
+  isInitialLoading: boolean;
   isCommentsError: boolean;
-  isRefetching: boolean;
+  hasNextPage: boolean;
+  fetchNextPage: () => void;
+  isFetchingNextPage: boolean;
   addComment: {
     isPending: boolean;
     variables: AddArticleCommentVariables | undefined;

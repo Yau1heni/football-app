@@ -28,6 +28,7 @@ export const ARTICLES_COLLECTIONS = {
   PATH: 'articles',
   FIELD_PATH: {
     TIMESTAMP: 'timestamp',
+    PARENT_COMMENT_ID: 'parentCommentId',
   },
   SUBCOLLECTIONS: {
     REACTIONS: 'reactions',

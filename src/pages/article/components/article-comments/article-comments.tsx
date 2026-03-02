@@ -7,7 +7,7 @@ import { ArticleCommentsList } from './article-comments-list';
 import { ArticleCommentsLoading } from './article-comments-loading';
 
 export const ArticleComments: FC = () => {
-  const { comments, isCommentsLoading, isCommentsError, addComment } = useArticleCommentsContext();
+  const { comments, isInitialLoading, isCommentsError, addComment } = useArticleCommentsContext();
 
   const handleSubmitRoot = (text: string) => {
     addComment.mutate({ text, parentCommentId: null });
@@ -17,7 +17,7 @@ export const ArticleComments: FC = () => {
     return <StateMessage variant={'error'} title={'Ошибка загрузки комментариев'} />;
   }
 
-  if (isCommentsLoading) {
+  if (isInitialLoading) {
     return <ArticleCommentsLoading />;
   }
 

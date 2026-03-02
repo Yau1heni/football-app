@@ -4,11 +4,3 @@ export const getArticleUserReactionQueryKeys = (articleId: string, userId: strin
   'articleUserReaction',
   { articleId, userId },
 ];
-
-export const getArticleCommentsQueryKeys = (articleId: string) => ['articleComments', articleId];
-
-export const getArticleCommentsReactionQueryKeys = (
-  articleId: string,
-  commentId: string,
-  userId: string
-) => ['articleCommentsReaction', { articleId, commentId, userId }];
