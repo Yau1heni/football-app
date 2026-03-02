@@ -19,8 +19,9 @@ const DEFAULT_MAX_DEPTH = 5;
 /**
  * Строит из плоского списка комментариев (с parentCommentId) плоский же список
  * для отрисовки с учётом вложенности: каждый элемент содержит комментарий и
- * глубину (0..maxDepth). Глубина ограничена maxDepth, чтобы не уходить вправо
- * при отрисовке отступами.
+ * глубину отступа (0..maxDepth). Все комментарии отрисовываются; глубина отступа
+ * ограничена maxDepth — комментарии глубже maxDepth показываются с отступом
+ * maxDepth, чтобы не уходить сильно вправо.
  *
  * Подходит для пагинированных данных: можно передать объединённый массив
  * из нескольких страниц (корни + ответы по каждой странице). Корни будут
@@ -30,11 +31,11 @@ const DEFAULT_MAX_DEPTH = 5;
  * Алгоритм:
  * 1) Группируем комментарии по parentCommentId (корни — где null).
  * 2) Сортируем корни и каждую группу ответов по времени (новые сверху).
- * 3) Обходим дерево в порядке «корень → ответы» (pre-order), присваиваем depth,
- *    не идём глубже maxDepth.
+ * 3) Обходим дерево в порядке «корень → ответы» (pre-order). Depth для отступа
+ *    ограничиваем maxDepth — вложенные глубже рисуются с тем же отступом.
  *
  * @param comments — плоский список комментариев из API (например, Firestore).
- * @param maxDepth — максимальная глубина вложенности (по умолчанию 5).
+ * @param maxDepth — максимальная глубина отступа (по умолчанию 5).
  * @returns Плоский массив { comment, depth } в порядке отрисовки.
  */
 export const buildCommentsDisplayList = (
@@ -62,10 +63,10 @@ export const buildCommentsDisplayList = (
   const traverse = (parentId: string | null, depth: number) => {
     const children = byParent.get(parentId) ?? [];
     children.forEach((comment) => {
-      result.push({ comment, depth });
-      if (depth < maxDepth) {
-        traverse(comment.id, depth + 1);
-      }
+      // Глубина для отступа ограничена maxDepth, чтобы не уходить вправо
+      const displayDepth = Math.min(depth, maxDepth);
+      result.push({ comment, depth: displayDepth });
+      traverse(comment.id, depth + 1);
     });
   };
 
