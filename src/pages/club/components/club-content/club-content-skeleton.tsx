@@ -12,22 +12,22 @@ export const ClubContentSkeleton: FC = () => (
     <PageTitleSkeleton />
     <header className={styles.header}>
       <div className={styles.imageContainer}>
-        <Skeleton variant="circular" width={280} height={280} className={styles.logo} />
+        <Skeleton variant={'circular'} width={280} height={280} className={styles.logo} />
       </div>
       <ContentContainer title={'Информация о клубу'}>
-        <Skeleton variant="text" width="50%" />
-        <Skeleton variant="text" width="50%" />
-        <Skeleton variant="text" width="50%" />
-        <Skeleton variant="text" width="50%" />
-        <Skeleton variant="text" width="50%" />
-        <Skeleton variant="text" width="30%" />
+        <Skeleton variant={'text'} width={'50%'} />
+        <Skeleton variant={'text'} width={'50%'} />
+        <Skeleton variant={'text'} width={'50%'} />
+        <Skeleton variant={'text'} width={'50%'} />
+        <Skeleton variant={'text'} width={'50%'} />
+        <Skeleton variant={'text'} width={'30%'} />
       </ContentContainer>
     </header>
     <ClubTrophiesListSkeleton />
     <ContentContainer title={'История'}>
-      <Skeleton variant="text" />
-      <Skeleton variant="text" />
-      <Skeleton variant="text" width="85%" />
+      <Skeleton variant={'text'} />
+      <Skeleton variant={'text'} />
+      <Skeleton variant={'text'} width={'85%'} />
     </ContentContainer>
   </div>
 );

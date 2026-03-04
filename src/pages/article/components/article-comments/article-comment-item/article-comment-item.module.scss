@@ -1,0 +1,23 @@
+.articleCommentItem {
+  padding: 12px 0;
+
+  &.deleted {
+    opacity: 0.8;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 6px;
+}
+
+.text {
+  margin: 0 0 8px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+}

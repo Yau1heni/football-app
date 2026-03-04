@@ -11,7 +11,7 @@ export const ClubTrophiesListSkeleton: FC = () => {
         {[1, 2, 3, 4].map((i) => (
           <Skeleton
             key={i}
-            variant="rectangular"
+            variant={'rectangular'}
             width={160}
             height={120}
             className={styles.trophyBlock}

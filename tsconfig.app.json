@@ -27,12 +27,14 @@
       "api": ["api/*"],
       "components": ["components/*"],
       "configs": ["configs/*"],
+      "contexts": ["contexts/*"],
       "constants": ["constants/*"],
       "hooks": ["hooks/*"],
       "pages": ["pages/*"],
+      "types": ["types/*"],
       "utils": ["utils/*"],
       "styles": ["styles/*"],
-      "store": ["store/*"]
+      "queries": ["queries/*"]
     }
   },
   "include": ["src"]

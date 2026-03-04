@@ -11,6 +11,7 @@ export const ArrowLeftIcon: FC<IconProps> = (props) => (
       strokeMiterlimit="10"
       strokeLinecap="round"
       strokeLinejoin="round"
+      fill="transparent"
     />
   </Icon>
 );

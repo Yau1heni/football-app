@@ -22,7 +22,7 @@ export const CheckBox: React.FC<CheckBoxProps> = ({ onChange, className, ...rest
       <input
         className={cn(styles.checkbox, className)}
         onChange={handleOnchange}
-        type="checkbox"
+        type={'checkbox'}
         id={'checkBox'}
         {...rest}
       />

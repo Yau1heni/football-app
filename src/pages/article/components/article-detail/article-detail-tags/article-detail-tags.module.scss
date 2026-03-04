@@ -1,0 +1,16 @@
+@use 'styles/variables.scss' as *;
+
+.articleDetailTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $space-xs;
+  margin-bottom: $space-l;
+
+  .tag {
+    padding: 4px 10px;
+    font-size: $font-size-xs;
+    background: $color-grey;
+    border-radius: 4px;
+    color: $color-secondary;
+  }
+}

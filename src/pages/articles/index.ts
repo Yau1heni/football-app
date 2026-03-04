@@ -1,1 +1,1 @@
-export { ArticlesPage } from './articles-page.tsx';
+export { ArticlesPageLazy as ArticlesPage } from './articles-page-lazy.tsx';

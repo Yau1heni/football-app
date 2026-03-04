@@ -1,5 +1,6 @@
 import { Container } from 'components/container';
 import { BurgerMenu } from 'components/header/components/burger-menu';
+import { HeaderControls } from 'components/header/components/header-controls';
 import { Navigation } from 'components/navigation';
 import { LogoIcon } from 'components/ui/icons/logo-icon';
 import { Typography } from 'components/ui/typography';
@@ -14,19 +15,23 @@ export const Header: FC = () => {
     <header className={styles.header}>
       <Container>
         <div className={styles.headerContent}>
-          <Link to={routes.main.mask} className={styles.logo} aria-label={'app logo'}>
-            <div className={styles.logo}>
-              <LogoIcon />
-              <Typography tag={'h1'} view={'p-20'} weight={'bold'}>
-                #iLoveThisGame
-              </Typography>
-            </div>
+          <Link to={routes.main.mask} className={styles.logo} aria-label={'Логотип приложения'}>
+            <LogoIcon />
+            <Typography tag={'h1'} view={'p-20'} weight={'bold'}>
+              #iLoveThisGame
+            </Typography>
           </Link>
-          <nav className={styles.desktopNav} aria-label="Основная навигация">
+          <div className={styles.desktopNav} aria-label={'Основная навигация'}>
             <Navigation />
-          </nav>
+          </div>
+          <div className={styles.desktopControls}>
+            <HeaderControls />
+          </div>
           <BurgerMenu>
-            <Navigation variant="panel" />
+            <Navigation variant={'panel'} />
+            <div className={styles.burgerMenuControls}>
+              <HeaderControls />
+            </div>
           </BurgerMenu>
         </div>
       </Container>

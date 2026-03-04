@@ -33,7 +33,7 @@
 .line {
   width: 22px;
   height: 2px;
-  background-color: $color-dark;
+  background-color: $color-text;
   border-radius: 1px;
   transform-origin: center;
   transition:
@@ -78,7 +78,7 @@
   z-index: 1001;
   width: min(280px, 85vw);
   max-width: 320px;
-  background-color: $color-light;
+  background-color: $color-surface;
   box-shadow: -4px 0 24px $color-dark-overlay;
   display: flex;
   flex-direction: column;

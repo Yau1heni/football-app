@@ -6,8 +6,8 @@
 }
 
 .input {
-  border: 1px solid $color-light;
-  background: $color-light;
+  border: 1px solid $color-surface;
+  background: $color-surface;
   padding: 14px 38px 14px 12px;
   font-weight: 400;
   font-size: $font-size-s;
@@ -31,7 +31,7 @@ input:disabled {
 }
 
 .notEmpty {
-  color: $color-dark;
+  color: $color-text;
 }
 
 .afterSlot {

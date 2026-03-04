@@ -1,0 +1,63 @@
+import { Button } from 'components/ui/button';
+import { Textarea } from 'components/ui/textarea';
+import type { FC } from 'react';
+import { useState } from 'react';
+
+import styles from './article-comment-form.module.scss';
+
+export type ArticleCommentFormProps = {
+  /** Отправка текста комментария (родитель сам знает root или reply по контексту). */
+  onSubmit: (text: string) => void;
+  /** Отмена (закрыть форму, сбросить ответ). */
+  onCancel?: () => void;
+  placeholder?: string;
+  loading?: boolean;
+};
+
+export const ArticleCommentForm: FC<ArticleCommentFormProps> = ({
+  onSubmit,
+  onCancel,
+  placeholder = 'Введите комментарий...',
+  loading = false,
+}) => {
+  const [text, setText] = useState('');
+
+  const handleSubmit = () => {
+    const trimmed = text.trim();
+    if (!trimmed) return;
+    onSubmit(trimmed);
+    setText('');
+  };
+
+  const handleCancel = () => {
+    setText('');
+    if (onCancel) {
+      onCancel();
+    }
+  };
+
+  return (
+    <div className={styles.articleCommentForm}>
+      <Textarea
+        value={text}
+        onChange={setText}
+        placeholder={placeholder}
+        rows={3}
+        disabled={loading}
+      />
+      <div className={styles.actions}>
+        <Button variant={'ghost'} onClick={handleCancel} disabled={loading}>
+          Отменить
+        </Button>
+        <Button
+          variant={'primary'}
+          onClick={handleSubmit}
+          disabled={!text.trim() || loading}
+          loading={loading}
+        >
+          Отправить
+        </Button>
+      </div>
+    </div>
+  );
+};

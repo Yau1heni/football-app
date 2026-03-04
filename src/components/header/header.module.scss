@@ -3,7 +3,7 @@
 
 .header {
   width: 100%;
-  background-color: $color-light;
+  background-color: $color-surface;
 
   &Content {
     display: flex;
@@ -22,11 +22,26 @@
   }
 
   .desktopNav {
+    @include tablet {
+      display: none;
+    }
+  }
+
+  .desktopControls {
     display: flex;
     align-items: center;
+    gap: $space-m;
 
     @include tablet {
       display: none;
     }
   }
+}
+
+.burgerMenuControls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: $space-m;
+  border-top: 1px solid $color-grey;
 }

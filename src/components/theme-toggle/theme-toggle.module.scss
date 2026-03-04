@@ -1,0 +1,11 @@
+@use 'styles/variables.scss' as *;
+
+.toggle {
+  width: 40px;
+  height: 40px;
+  padding: 0;
+}
+
+.icon {
+  flex-shrink: 0;
+}

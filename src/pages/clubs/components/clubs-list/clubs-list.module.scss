@@ -10,14 +10,5 @@
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 24px;
-
-    .cardWrapper {
-      flex: 0 1 min(350px, 100%);
-      min-width: 0;
-
-      @include tablet {
-        flex: 1 1 100%;
-      }
-    }
   }
 }

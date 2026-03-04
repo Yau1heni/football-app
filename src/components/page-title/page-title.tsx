@@ -7,12 +7,12 @@ import { useLocation, useNavigate } from 'react-router';
 
 import styles from './page-title.module.scss';
 
-type RecipeTitleProps = {
+type PageTitleProps = {
   title: string;
   teamColors?: string[];
 };
 
-export const PageTitle: FC<RecipeTitleProps> = (props) => {
+export const PageTitle: FC<PageTitleProps> = (props) => {
   const { title, teamColors = [] } = props;
 
   const navigate = useNavigate();
@@ -25,7 +25,7 @@ export const PageTitle: FC<RecipeTitleProps> = (props) => {
           <ArrowRightIcon
             width={32}
             height={32}
-            viewBox="0 0 32 32"
+            viewBox={'0 0 32 32'}
             color={'accent'}
             aria-label={'вернуться назад'}
           />
