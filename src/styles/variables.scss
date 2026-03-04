@@ -1,20 +1,23 @@
 // Шрифты
 $font-family: 'Roboto', sans-serif;
 
-// Цвета
-$color-primary: #518581;
-$color-primary-hover: #86aaa7;
-$color-primary-active: #487773;
-$color-primary-overlay: rgba(81, 133, 129, 0.08);
-$color-secondary: #afadb5;
-$color-light: #fff;
-$color-dark: #000;
-$color-dark-overlay: rgba(0, 0, 0, 0.12);
-$color-grey: #d9d9d9;
-$color-grey-overlay: rgba(217, 217, 217, 0.3);
-$color-background: #f3f3f3;
-$color-error: #c62828;
-$skeleton-wave: rgba(255, 255, 255, 0.4);
+// Цвета (управление в theme.scss)
+$color-primary: var(--color-primary);
+$color-primary-hover: var(--color-primary-hover);
+$color-primary-active: var(--color-primary-active);
+$color-secondary: var(--color-secondary);
+$color-light: var(--color-light);
+$color-dark: var(--color-dark);
+$color-surface: var(--color-surface);
+$color-text: var(--color-text);
+$color-grey: var(--color-grey);
+$color-background: var(--color-background);
+$color-primary-overlay: var(--color-primary-overlay);
+$color-grey-overlay: var(--color-grey-overlay);
+$color-dark-overlay: var(--color-dark-overlay);
+$color-error: var(--color-error);
+$skeleton-wave: var(--skeleton-wave);
+$color-on-primary: var(--color-on-primary);
 
 // Отступы
 $space-xxs: 8px;
@@ -23,6 +26,7 @@ $space-s: 14px;
 $space-m: 16px;
 $space-l: 20px;
 $space-xl: 24px;
+$space-xxl: 32px;
 
 // Размеры шрифтов
 $font-size-xs: 14px;

@@ -15,7 +15,7 @@ export type TypographyProps = {
   /** Контент */
   children: ReactNode;
   /** Цвет */
-  color?: 'primary' | 'secondary' | 'accent' | 'error';
+  color?: 'primary' | 'light' | 'secondary' | 'accent' | 'error';
   /** Максимальное кол-во строк */
   maxLines?: number;
   /** Id для доступности (aria-labelledby и др.) */

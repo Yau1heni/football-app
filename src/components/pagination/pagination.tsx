@@ -41,9 +41,8 @@ export const Pagination: FC<PaginationProps> = ({ total = 0, page = START_PAGE, 
       >
         <ArrowRightIcon
           width={32}
-          widths={32}
+          height={32}
           viewBox={'0 0 32 32'}
-          color={page === START_PAGE ? 'secondary' : 'primary'}
           aria-label={'перейти на прошлую страницу'}
         />
       </Button>
@@ -51,13 +50,18 @@ export const Pagination: FC<PaginationProps> = ({ total = 0, page = START_PAGE, 
       <div className={styles.paginationItems}>
         {pages.map((p, index) => (
           <Button
-            variant={'ghost'}
             key={index}
             disabled={p === '...'}
             onClick={() => onItemClick(p)}
-            className={cn(page === p && styles.active, p === '...' && styles.dots)}
+            className={cn(
+              styles.paginationItem,
+              page === p && styles.active,
+              p === '...' && styles.dots
+            )}
           >
-            <Typography view={'p-18'}>{p}</Typography>
+            <Typography view={'p-18'} color={page === p ? 'light' : 'primary'}>
+              {p}
+            </Typography>
           </Button>
         ))}
       </div>
@@ -70,9 +74,8 @@ export const Pagination: FC<PaginationProps> = ({ total = 0, page = START_PAGE, 
       >
         <ArrowLeftIcon
           width={32}
-          widths={32}
+          height={32}
           viewBox={'0 0 32 32'}
-          color={page >= pages.length ? 'secondary' : 'primary'}
           aria-label={'перейти на следующую страницу'}
         />
       </Button>

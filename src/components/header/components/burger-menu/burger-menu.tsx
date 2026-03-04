@@ -12,7 +12,7 @@ type BurgerMenuProps = {
 };
 
 export const BurgerMenu: FC<BurgerMenuProps> = ({ children }) => {
-  const { isOpen, close, toggle } = useBurgerMenu();
+  const { isOpen, close, toggle, triggerRef } = useBurgerMenu();
 
   const handleOverlayClick = (e: MouseEvent) => {
     if (e.target === e.currentTarget) close();
@@ -24,23 +24,23 @@ export const BurgerMenu: FC<BurgerMenuProps> = ({ children }) => {
         className={styles.overlay}
         data-visible={isOpen || undefined}
         onClick={handleOverlayClick}
-        aria-hidden="true"
+        aria-hidden={'true'}
       />
       <div
         className={styles.panel}
         data-visible={isOpen || undefined}
         data-burger-panel
-        role="dialog"
-        aria-modal="true"
-        aria-label="Меню навигации"
+        role={'dialog'}
+        aria-modal={'true'}
+        aria-label={'Меню навигации'}
       >
         <div className={styles.panelHeader}>
           <Button
-            type="button"
-            variant="ghost"
+            type={'button'}
+            variant={'ghost'}
             className={styles.closeButton}
             onClick={close}
-            aria-label="Закрыть меню"
+            aria-label={'Закрыть меню'}
           >
             <CloseIcon />
           </Button>
@@ -53,7 +53,8 @@ export const BurgerMenu: FC<BurgerMenuProps> = ({ children }) => {
   return (
     <>
       <button
-        type="button"
+        ref={triggerRef}
+        type={'button'}
         className={styles.burgerButton}
         onClick={toggle}
         aria-expanded={isOpen}

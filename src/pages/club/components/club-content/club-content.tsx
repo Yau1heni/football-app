@@ -1,12 +1,12 @@
-import { clubsApi } from 'api/clubs-api.ts';
 import { ClubLogo } from 'components/club-logo';
 import { PageTitle } from 'components/page-title';
 import { StateMessage } from 'components/state-message';
-import { useAsync } from 'hooks/use-async.ts';
+import { Button } from 'components/ui/button';
+import { useFavoritesContext } from 'contexts/favorites';
 import { usePageMeta } from 'hooks/use-page-meta.ts';
+import { useClubQuery } from 'queries/club';
 import type { FC } from 'react';
 import { useParams } from 'react-router';
-import type { Club } from 'types/clubs.types.ts';
 
 import { ClubDescription } from '../club-description/club-description.tsx';
 import { ClubHistory } from '../club-history/club-history.tsx';
@@ -18,23 +18,16 @@ import styles from './club-content.module.scss';
 export const ClubContent: FC = () => {
   const { id } = useParams();
 
-  const {
-    data: club,
-    isLoading,
-    isError,
-  } = useAsync<Club | null>(() => (id ? clubsApi.getClub(id) : Promise.resolve(null)), [id]);
+  const { data: club, isLoading, isError } = useClubQuery(id);
+  const { favoriteIds, toggleFavorite, isPending, loadingClubId } = useFavoritesContext();
 
   usePageMeta({
     title: club ? `${club.name} | #iLoveThisGame` : undefined,
     description: club ? `${club.name} — клуб из ${club.country}` : undefined,
   });
 
-  if (!id) {
-    return <StateMessage variant="empty" title="Клуб не найден" />;
-  }
-
   if (isError) {
-    return <StateMessage variant="error" title="Ошибка загрузки клуба" />;
+    return <StateMessage variant={'error'} title={'Ошибка загрузки клуба'} />;
   }
 
   if (isLoading) {
@@ -42,14 +35,17 @@ export const ClubContent: FC = () => {
   }
 
   if (!club) {
-    return <StateMessage variant="empty" title="Клуб не найден" />;
+    return <StateMessage variant={'empty'} title={'Клуб не найден'} />;
   }
+
+  const isFavorite = favoriteIds.includes(club.id);
+  const isToggleLoading = loadingClubId === club.id;
 
   return (
     <div className={styles.clubContent}>
       <PageTitle title={club.name || 'Club'} teamColors={club.colors} />
       <div className={styles.header}>
-        <ClubLogo logo={club.logo} />
+        <ClubLogo logo={club.logo} isFavorite={isFavorite} />
         <ClubDescription
           ground={club.ground}
           country={club.country}
@@ -59,6 +55,16 @@ export const ClubContent: FC = () => {
           social={club.social}
         />
       </div>
+
+      <Button
+        variant={'primary'}
+        disabled={isPending}
+        loading={isToggleLoading}
+        className={styles.favoriteButton}
+        onClick={() => toggleFavorite(club.id, isFavorite)}
+      >
+        {isFavorite ? 'Удалить из избранного' : 'Добавить в избранное'}
+      </Button>
 
       {club.trophies.length > 0 && <ClubTrophiesList trophies={club.trophies} />}
 

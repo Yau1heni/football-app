@@ -1,0 +1,60 @@
+@use 'styles/variables.scss' as *;
+
+.reactionButtons {
+  display: inline-flex;
+  align-items: center;
+  gap: $space-s;
+}
+
+.reactionButtonsSizeS {
+  gap: $space-xs;
+
+  .trigger {
+    padding: 2px;
+  }
+
+  .count {
+    font-size: 12px;
+  }
+}
+
+.reactionButtonsSizeM {
+  .trigger {
+    padding: 4px;
+  }
+
+  .count {
+    font-size: $font-size-xs;
+  }
+}
+
+.trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px;
+
+  &:focus-visible {
+    outline: 2px solid $color-primary;
+    outline-offset: 2px;
+  }
+}
+
+.triggerActive {
+  color: $color-primary;
+
+  &:hover {
+    color: $color-primary-active;
+  }
+}
+
+.icon {
+  flex-shrink: 0;
+  stroke: currentColor;
+  fill: transparent;
+}
+
+.iconFilled {
+  stroke: $color-primary;
+  fill: $color-primary;
+}

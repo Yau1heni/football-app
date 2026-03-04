@@ -1,0 +1,14 @@
+@use 'styles/variables.scss' as *;
+
+.articleCommentForm {
+  display: flex;
+  flex-direction: column;
+  gap: $space-l;
+  padding: $space-xs 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: $space-xs;
+}

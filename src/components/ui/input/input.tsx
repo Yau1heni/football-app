@@ -28,7 +28,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>((props, ref) => {
         value={value}
         ref={ref}
         onChange={handleOnChange}
-        type="text"
+        type={'text'}
         {...rest}
       />
       <div className={styles.afterSlot}>{afterSlot}</div>

@@ -16,7 +16,7 @@
   font-weight: 400;
   font-size: $font-size-m;
   line-height: 120%;
-  color: $color-light;
+  color: $color-on-primary;
 }
 
 .button_primary:not(.buttonLoading):hover {
@@ -28,17 +28,11 @@
 }
 
 .button_ghost {
-  padding: 0;
+  padding: 8px 12px;
   min-width: 40px;
   min-height: 40px;
   background: transparent;
-  color: $color-dark;
-  transition: background-color 0.2s ease;
-}
-
-.button_ghost:not(.buttonLoading):hover,
-.button_ghost:not(.buttonLoading):active {
-  background-color: $color-primary-overlay;
+  color: $color-text;
 }
 
 .button:disabled {
@@ -50,6 +44,14 @@
 .button_ghost:disabled {
   background: transparent;
   color: $color-grey;
+}
+
+.button_ghost:not(.buttonLoading):hover {
+  color: $color-primary-hover;
+}
+
+.button_ghost:not(.buttonLoading):active {
+  color: $color-primary-active;
 }
 
 .button .loader {

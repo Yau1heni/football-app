@@ -24,9 +24,9 @@ export const ClubLogo: FC<ClubLogoPropsType> = (props) => {
         className
       )}
     >
-      <img className={styles.image} src={logo || DEFAULT_CLUB_IMAGE} alt="club logo" />
+      <img className={styles.image} src={logo || DEFAULT_CLUB_IMAGE} alt={'club logo'} />
       {isFavorite && (
-        <Typography tag={'span'} className={styles.favoriteBadge} aria-label="В избранном">
+        <Typography tag={'span'} className={styles.favoriteBadge} aria-label={'В избранном'}>
           В избранном
         </Typography>
       )}
